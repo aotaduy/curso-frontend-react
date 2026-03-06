@@ -31,27 +31,35 @@ jobs:
           node-version: '20'
       
       - name: Install markdown converter
-        run: npm install -g markdown-it-cli
+        run: npm install -g markdown-it markdown-it-highlightjs
       
       - name: Build site
         run: |
           mkdir -p _site
           
-          # Function to wrap markdown HTML with GitHub styling
-          wrap_with_github_style() {
-            local input_file="$1"
-            local output_file="$2"
-            local title=$(basename "$input_file" .md)
-            
-            cat > "$output_file" << 'HTMLHEAD'
-          <!DOCTYPE html>
+          # Create markdown conversion script
+          cat > convert-md.js << 'CONVERTJS'
+          const fs = require('fs');
+          const path = require('path');
+          const md = require('markdown-it')({
+            html: false,  // Don't parse HTML tags in markdown
+            breaks: true,
+            linkify: true
+          });
+          
+          const inputFile = process.argv[2];
+          const outputFile = process.argv[3];
+          const title = path.basename(inputFile, '.md');
+          
+          const markdown = fs.readFileSync(inputFile, 'utf8');
+          const htmlContent = md.render(markdown);
+          
+          const fullHtml = `<!DOCTYPE html>
           <html lang="es">
           <head>
               <meta charset="UTF-8">
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          HTMLHEAD
-            echo "    <title>$title</title>" >> "$output_file"
-            cat >> "$output_file" << 'HTMLSTYLE'
+              <title>${title}</title>
               <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css">
               <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
               <style>
@@ -79,40 +87,33 @@ jobs:
           </head>
           <body>
               <article class="markdown-body">
-          HTMLSTYLE
-            markdown-it "$input_file" >> "$output_file"
-            cat >> "$output_file" << 'HTMLFOOT'
+          ${htmlContent}
               </article>
               <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
               <script type="module">
                   import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
                   
-                  // Initialize mermaid
                   mermaid.initialize({ 
                       startOnLoad: false, 
                       theme: 'dark',
                       securityLevel: 'loose'
                   });
                   
-                  // Convert mermaid code blocks to diagrams
                   document.querySelectorAll('pre code.language-mermaid').forEach((block) => {
                       const pre = block.parentElement;
                       const mermaidDiv = document.createElement('div');
                       mermaidDiv.className = 'mermaid';
-                      // Get the text content and preserve <br/> tags for mermaid
                       let text = block.textContent || block.innerText;
                       mermaidDiv.textContent = text;
                       pre.replaceWith(mermaidDiv);
                   });
                   
-                  // Run mermaid rendering
                   try {
                       await mermaid.run({
                           querySelector: '.mermaid',
                       });
                   } catch (e) {
                       console.error('Mermaid rendering error:', e);
-                      // Show the error in the diagram div
                       document.querySelectorAll('.mermaid').forEach(div => {
                           if (!div.hasAttribute('data-processed')) {
                               div.style.color = 'red';
@@ -122,31 +123,31 @@ jobs:
                       });
                   }
                   
-                  // Apply syntax highlighting to non-mermaid code blocks
                   document.querySelectorAll('pre code:not(.language-mermaid)').forEach((block) => {
                       hljs.highlightElement(block);
                   });
               </script>
           </body>
-          </html>
-          HTMLFOOT
-          }
+          </html>`;
           
-          # Convert markdown files to HTML with GitHub styling
+          fs.writeFileSync(outputFile, fullHtml, 'utf8');
+          CONVERTJS
+          
+          # Convert markdown files to HTML
           for file in *.md; do
             if [ -f "$file" ]; then
               filename="${file%.md}"
-              wrap_with_github_style "$file" "_site/${filename}.html"
+              node convert-md.js "$file" "_site/${filename}.html"
             fi
           done
           
           # Copy ejemplos-hypertexto folder
           cp -r ejemplos-hypertexto _site/
           
-          # Convert README.md files in examples to README.html with GitHub styling
+          # Convert README.md files in examples to README.html
           find _site/ejemplos-hypertexto -type f -name "README.md" | while read readme; do
             dir=$(dirname "$readme")
-            wrap_with_github_style "$readme" "$dir/README.html"
+            node convert-md.js "$readme" "$dir/README.html"
           done
           
           # Create index.html with links to all pages
