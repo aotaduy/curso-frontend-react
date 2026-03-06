@@ -742,6 +742,8 @@ function Ejemplo() {
 }
 ```
 
+**💡 Ver ejemplo:** [React Básico GET](ejemplos-hypertexto/11-react-basico-get/)
+
 #### Ejemplo: Fetch de datos (API)
 
 ```javascript
@@ -1480,6 +1482,8 @@ function InputFahrenheit({ value, onChange }) {
 ---
 
 ## Estado Asíncrono: Llamadas a API
+
+**💡 Ver ejemplos:** [React Básico GET](ejemplos-hypertexto/11-react-basico-get/) | [React CRUD TodoList](ejemplos-hypertexto/12-react-crud-todolist/)
 
 ### Definición
 

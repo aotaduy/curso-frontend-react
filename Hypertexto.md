@@ -28,6 +28,8 @@ HTML (HyperText Markup Language) es el lenguaje de marcado estándar para crear 
 - **Semántica**: Tags descriptivos (`<header>`, `<nav>`, `<article>`) vs genéricos (`<div>`, `<span>`)
 - **HTML5**: Versión actual (2014), incluye APIs JavaScript (Canvas, Video, Geolocation, etc.)
 
+**💡 Ver ejemplos:** [HTML Básico](ejemplos-hypertexto/01-html-basico/) | [HTML Estructura Semántica](ejemplos-hypertexto/02-html-estructura-semantica/)
+
 ### Ejemplo: Documento HTML básico
 
 ```html
@@ -198,6 +200,8 @@ CSS (Cascading Style Sheets) es el lenguaje de hojas de estilo que define la pre
 - **Box Model**: Todo elemento es una caja con content, padding, border, margin
 - **Layout**: Flexbox (1-dimensional) y Grid (2-dimensional) para posicionar elementos
 
+**💡 Ver ejemplos:** [CSS Inline](ejemplos-hypertexto/03-css-inline/) | [CSS Archivo Externo](ejemplos-hypertexto/04-css-archivo-externo/)
+
 ### Ejemplo: CSS básico
 
 ```css
@@ -281,6 +285,8 @@ a:visited {
 └─────────────────────────────────┘
 ```
 
+**💡 Ver ejemplo:** [CSS Layout Flexbox](ejemplos-hypertexto/05-css-layout-flexbox/)
+
 ### Ejemplo: Flexbox (Layout 1D)
 
 ```html
@@ -308,6 +314,8 @@ a:visited {
     flex: 1;  /* Cada item ocupa espacio igual */
 }
 ```
+
+**💡 Ver ejemplo:** [CSS Layout Grid](ejemplos-hypertexto/06-css-layout-grid/)
 
 ### Ejemplo: Grid (Layout 2D)
 
@@ -399,6 +407,8 @@ JavaScript (JS) es un lenguaje de programación dinámico, interpretado, orienta
 - **Asíncrono**: Operaciones no bloqueantes con Promises y async/await
 - **DOM manipulation**: Puede modificar HTML/CSS dinámicamente mediante APIs del navegador
 - **ECMAScript**: Estándar del lenguaje; versiones modernas (ES6/ES2015+) agregaron clases, arrow functions, destructuring, modules
+
+**💡 Ver ejemplo:** [JavaScript Variables y Funciones](ejemplos-hypertexto/07-javascript-variables-funciones/)
 
 ### Ejemplo: Variables y tipos
 
@@ -506,6 +516,8 @@ dobles = list(map(lambda x: x * 2, numeros))      # [2, 4, 6, 8, 10]
 pares = list(filter(lambda x: x % 2 == 0, numeros)) # [2, 4]
 ```
 
+**💡 Ver ejemplos:** [JavaScript DOM](ejemplos-hypertexto/08-javascript-dom/) | [JavaScript Eventos](ejemplos-hypertexto/09-javascript-eventos/)
+
 ### Ejemplo: Manipulación del DOM
 
 ```javascript
@@ -557,6 +569,8 @@ formulario.addEventListener('submit', (event) => {
     // Aquí harías un fetch() para enviar datos al servidor
 });
 ```
+
+**💡 Ver ejemplo:** [JavaScript Fetch API](ejemplos-hypertexto/10-javascript-fetch-api/)
 
 ### Ejemplo: Asincronía con Promises
 
@@ -687,6 +701,8 @@ El DOM (Document Object Model) es una representación en árbol de la estructura
 - **Métodos de selección**: `getElementById()`, `querySelector()`, `querySelectorAll()` para encontrar elementos
 - **Propiedades y métodos**: Acceso a atributos (`element.id`), contenido (`textContent`, `innerHTML`), estilos (`style`), etc.
 - **Event listeners**: Asociar funciones a eventos de elementos para reaccionar a acciones del usuario
+
+**💡 Ver ejemplo:** [JavaScript DOM](ejemplos-hypertexto/08-javascript-dom/)
 
 ### Ejemplo: Estructura y acceso básico
 

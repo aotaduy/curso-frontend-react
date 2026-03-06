@@ -955,6 +955,8 @@ parrafo.textContent = 'Nuevo párrafo creado dinámicamente';
 document.body.appendChild(parrafo);
 ```
 
+**💡 Ver ejemplo:** [JavaScript Fetch API](ejemplos-hypertexto/10-javascript-fetch-api/)
+
 ##### Ejemplo: Fetch API (peticiones HTTP)
 ```javascript
 // GET request
