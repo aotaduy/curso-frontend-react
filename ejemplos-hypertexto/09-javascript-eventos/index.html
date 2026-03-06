@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Eventos - Concepto 09</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>JavaScript: Eventos</h1>
+
+    <p>Los eventos son acciones del usuario (clicks, escritura, movimiento del mouse) 
+       a las que el código JavaScript puede responder mediante <strong>event listeners</strong>.</p>
+
+    <h2>1. Click Event</h2>
+    <div class="demo-section">
+        <button id="btn-click">Haz clic aquí</button>
+        <div id="result-click" class="event-list"></div>
+    </div>
+
+    <h2>2. Mouse Events (Hover)</h2>
+    <div class="demo-section">
+        <div id="hover-demo" style="background-color: #ecf0f1; padding: 30px; border-radius: 5px; 
+                                     text-align: center; font-size: 18px; cursor: pointer;">
+            👆 Pasa el mouse aquí
+        </div>
+        <div id="result-hover" class="event-list" style="margin-top: 10px;"></div>
+    </div>
+
+    <h2>3. Keyboard Events (Escritura)</h2>
+    <div class="demo-section">
+        <input type="text" id="input-keyboard" placeholder="Escribe algo...">
+        <div id="result-keyboard" class="event-list"></div>
+    </div>
+
+    <h2>4. Form Submission</h2>
+    <div class="demo-section">
+        <form id="my-form">
+            <div>
+                <label for="name">Nombre:</label><br>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+        <div id="result-form"></div>
+    </div>
+
+    <h2>5. Change Event</h2>
+    <div class="demo-section">
+        <label for="selector">Elige una opción:</label>
+        <select id="selector">
+            <option value="">-- Selecciona --</option>
+            <option value="html">HTML</option>
+            <option value="css">CSS</option>
+            <option value="js">JavaScript</option>
+            <option value="react">React</option>
+        </select>
+        <div id="result-change" class="event-list"></div>
+    </div>
+
+    <h2>6. Check/Uncheck (Checkboxes)</h2>
+    <div class="demo-section">
+        <div>
+            <label><input type="checkbox" name="languages" value="html"> HTML</label><br>
+            <label><input type="checkbox" name="languages" value="css"> CSS</label><br>
+            <label><input type="checkbox" name="languages" value="js"> JavaScript</label><br>
+        </div>
+        <div id="result-checkbox" class="event-list"></div>
+    </div>
+
+    <h2>7. Event Delegation (Delegación de Eventos)</h2>
+    <div class="demo-section">
+        <ul id="dynamic-list-events">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+        <button onclick="addEventItem()">Agregar Item</button>
+        <div id="result-delegation" class="event-list"></div>
+    </div>
+
+    <h2>8. Focus y Blur Events</h2>
+    <div class="demo-section">
+        <input type="text" id="input-focus" placeholder="Haz clic para enfocarte">
+        <div id="result-focus" class="event-list"></div>
+    </div>
+
+    <h2>9. Window Events</h2>
+    <div class="demo-section">
+        <button onclick="showWindowData()">Mostrar Datos de Ventana</button>
+        <div id="result-window" class="event-list" style="display:none;"></div>
+    </div>
+
+    <h2>10. Event Bubbling (Propagación)</h2>
+    <div class="demo-section">
+        <div id="parent-bubbling" style="background-color: #ecf0f1; padding: 20px; border-radius: 5px;">
+            Padre
+            <button id="child-bubbling" style="display: block; margin-top: 10px;">Hijo</button>
+        </div>
+        <div id="result-bubbling" class="event-list"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

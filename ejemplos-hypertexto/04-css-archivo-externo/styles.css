@@ -1,0 +1,195 @@
+/* Estilos CSS externos - Mejor práctica */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+/* Encabezado */
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin: 30px 0;
+    font-size: 2.5em;
+}
+
+h2 {
+    color: #2c3e50;
+    margin: 20px 0 10px 0;
+    font-size: 1.8em;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 10px;
+}
+
+h3 {
+    color: #34495e;
+    margin: 15px 0 10px 0;
+}
+
+/* Párrafos */
+p {
+    margin: 10px 0;
+    color: #555;
+}
+
+code {
+    background-color: #ecf0f1;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    color: #e74c3c;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+}
+
+/* Cajas destacadas */
+.box-info {
+    background-color: #e8f4f8;
+    border-left: 4px solid #3498db;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+.box-warning {
+    background-color: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+    color: #856404;
+}
+
+/* Listas */
+ul, ol {
+    margin: 15px 0 15px 20px;
+}
+
+li {
+    margin: 8px 0;
+}
+
+/* Botones */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px 5px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+.btn-success {
+    background-color: #27ae60;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #229954;
+}
+
+/* Tarjetas / Cards */
+.card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 15px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+/* Tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th {
+    background-color: #34495e;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background-color: #ecf0f1;
+}
+
+/* Footer */
+footer {
+    background-color: #34495e;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+footer p {
+    color: white;
+    margin: 5px 0;
+}
+
+/* Responsive - Mobile first */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    h2 {
+        font-size: 1.4em;
+    }
+    
+    .container {
+        padding: 10px;
+    }
+}

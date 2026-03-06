@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript DOM - Concepto 08</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>JavaScript: Manipulación del DOM</h1>
+
+    <p><strong>El DOM</strong> es la representación en memoria del HTML. JavaScript puede modificarlo dinámicamente.</p>
+
+    <h2>1. Seleccionar Elementos</h2>
+    <div class="demo-section">
+        <p id="paragraph-demo">Párrafo original</p>
+        <button onclick="selectElements()">Mostrar en Consola</button>
+        <div class="result-box" id="result-select"></div>
+    </div>
+
+    <h2>2. Modificar Contenido</h2>
+    <div class="demo-section">
+        <p id="content-text">Texto original</p>
+        <button onclick="changeContent()">Cambiar Contenido</button>
+        <button onclick="changeHTML()">Cambiar con HTML</button>
+        <button onclick="resetContent()">Restablecer</button>
+    </div>
+
+    <h2>3. Modificar Estilos</h2>
+    <div class="demo-section">
+        <p id="style-demo" style="color: black; font-size: 16px; padding: 10px;">
+            Párrafo con estilos
+        </p>
+        <button onclick="changeColor()">Color Azul</button>
+        <button onclick="changeFontSize()">Aumentar Tamaño</button>
+        <button onclick="changeBackground()">Fondo Amarillo</button>
+        <button onclick="resetStyles()">Restablecer</button>
+    </div>
+
+    <h2>4. Agregar/Quitar Clases</h2>
+    <div class="demo-section">
+        <p id="class-demo">Párrafo para manipular clases</p>
+        <button onclick="addClass()">Destacar ⭐</button>
+        <button onclick="removeClass()">Normal</button>
+        <button onclick="toggleClass()">Toggle</button>
+    </div>
+
+    <h2>5. Crear Elementos Nuevos</h2>
+    <div class="demo-section">
+        <div id="dynamic-container" style="background-color: #ecf0f1; padding: 15px; border-radius: 5px;"></div>
+        <button onclick="createParagraph()">Agregar Párrafo</button>
+        <button onclick="createButton()">Agregar Botón</button>
+        <button onclick="clearContainer()">Limpiar</button>
+    </div>
+
+    <h2>6. Modificar Atributos</h2>
+    <div class="demo-section">
+        <img id="myImage" src="https://via.placeholder.com/100" alt="Imagen placeholder" style="margin: 10px 0;">
+        <br>
+        <button onclick="changeImage()">Cambiar Imagen</button>
+        <button onclick="changeTitle()">Agregar Título</button>
+    </div>
+
+    <h2>7. Agregar/Quitar Elementos en Listas</h2>
+    <div class="demo-section">
+        <ul id="dynamicList">
+            <li>Elemento 1</li>
+            <li>Elemento 2</li>
+            <li>Elemento 3</li>
+        </ul>
+        <button onclick="addItem()">Agregar Item</button>
+        <button onclick="removeLastItem()">Quitar Último</button>
+        <button onclick="clearList()">Limpiar Lista</button>
+    </div>
+
+    <h2>8. Lectura de Valores de Inputs</h2>
+    <div class="demo-section">
+        <input type="text" id="myInput" placeholder="Escribe algo...">
+        <button onclick="readValue()">Leer Valor</button>
+        <div id="result-input" class="result-box" style="display:none;"></div>
+    </div>
+
+    <h2>9. Iterar sobre Elementos</h2>
+    <div class="demo-section">
+        <ul id="iterate-list">
+            <li>Apple</li>
+            <li>Banana</li>
+            <li>Cherry</li>
+        </ul>
+        <button onclick="iterateList()">Mostrar Items en Consola</button>
+    </div>
+
+    <h2>10. Búsqueda de Elemento Padre/Hijo</h2>
+    <div class="demo-section" id="container-parent">
+        <div>
+            <p>Párrafo 1</p>
+            <p id="special-paragraph">Párrafo especial (hijo)</p>
+            <p>Párrafo 3</p>
+        </div>
+        <button onclick="findParent()">Buscar Elemento Padre</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

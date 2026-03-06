@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Variables y Funciones - Concepto 07</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        h1 {
+            text-align: center;
+        }
+        pre {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border-left: 4px solid #e74c3c;
+        }
+        .output {
+            background-color: #fff9e6;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 4px solid #f39c12;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript: Variables y Funciones</h1>
+    
+    <p><strong>Abre la consola del navegador (F12) para ver los resultados de los ejemplos.</strong></p>
+
+    <h2>1. Declaración de Variables</h2>
+    <pre>
+// let, const, var (let y const son lo recomendado)
+let nombre = "Juan";
+const edad = 25;
+var legado = "antiguo";
+
+console.log(nombre);  // "Juan"
+console.log(edad);    // 25
+    </pre>
+
+    <h2>2. Tipos de Datos Dinámicos</h2>
+    <pre>
+let variable = 42;        // Number
+console.log(typeof variable);  // "number"
+
+variable = "texto";       // Cambiar a String
+console.log(typeof variable);  // "string"
+
+variable = true;          // Cambiar a Boolean
+console.log(typeof variable);  // "boolean"
+
+// Arrays y Objects
+let colores = ["rojo", "azul", "verde"];
+let persona = { nombre: "Ana", edad: 21, ciudad: "Buenos Aires" };
+    </pre>
+
+    <h2>3. Funciones Declarativas</h2>
+    <pre>
+function saludar(nombre) {
+    return "Hola, " + nombre;
+}
+
+console.log(saludar("Carlos"));  // "Hola, Carlos"
+
+function sumar(a, b) {
+    return a + b;
+}
+
+console.log(sumar(5, 3));  // 8
+    </pre>
+
+    <h2>4. Arrow Functions (Compactas)</h2>
+    <pre>
+// Función completa con return
+const multiplicar = (a, b) => {
+    return a * b;
+};
+console.log(multiplicar(4, 5));  // 20
+
+// Función con return implícito (una línea)
+const dividir = (a, b) => a / b;
+console.log(dividir(20, 4));  // 5
+
+// Sin parámetros
+const obtenerFecha = () => new Date();
+console.log(obtenerFecha());
+
+// Un parámetro (paréntesis opcionales)
+const elevar = x => x * x;
+console.log(elevar(3));  // 9
+    </pre>
+
+    <h2>5. Operadores Matemáticos</h2>
+    <pre>
+console.log(10 + 5);   // 15 (suma)
+console.log(10 - 5);   // 5 (resta)
+console.log(10 * 5);   // 50 (multiplicación)
+console.log(10 / 5);   // 2 (división)
+console.log(10 % 3);   // 1 (módulo/residuo)
+console.log(2 ** 3);   // 8 (potencia)
+    </pre>
+
+    <h2>6. Comparadores Lógicos</h2>
+    <pre>
+// Igualdad
+console.log(5 == "5");   // true (solo compara valor)
+console.log(5 === "5");  // false (compara tipo y valor - MÁS SEGURO)
+
+// Mayor/Menor
+console.log(10 > 5);     // true
+console.log(10 < 5);     // false
+console.log(10 >= 10);   // true
+
+// AND, OR, NOT
+console.log(true && false);  // false
+console.log(true || false);  // true
+console.log(!true);          // false
+    </pre>
+
+    <h2>7. Condicionales (if/else)</h2>
+    <pre>
+function calificar(nota) {
+    if (nota >= 9) {
+        return "Sobresaliente";
+    } else if (nota >= 7) {
+        return "Bueno";
+    } else if (nota >= 6) {
+        return "Aprobado";
+    } else {
+        return "Reprobado";
+    }
+}
+
+console.log(calificar(8));   // "Bueno"
+console.log(calificar(5));   // "Reprobado"
+
+// Switch
+function tipoFruta(fruta) {
+    switch(fruta) {
+        case "manzana":
+            return "Roja";
+        case "plátano":
+            return "Amarilla";
+        default:
+            return "No sé";
+    }
+}
+
+console.log(tipoFruta("manzana"));  // "Roja"
+    </pre>
+
+    <h2>8. Arrays y Métodos</h2>
+    <pre>
+let numeros = [1, 2, 3, 4, 5];
+
+// Acceder a elementos
+console.log(numeros[0]);   // 1
+console.log(numeros.length);  // 5
+
+// Agregar elementos
+numeros.push(6);           // Agregar al final
+numeros.unshift(0);        // Agregar al inicio
+
+// Eliminar elementos
+numeros.pop();             // Elimina último
+numeros.shift();           // Elimina primero
+
+// Métodos funcionales
+let dobles = numeros.map(x => x * 2);  // [2, 4, 6, 8, 10]
+let pares = numeros.filter(x => x % 2 === 0);  // [2, 4]
+let suma = numeros.reduce((a, b) => a + b, 0);  // 15
+    </pre>
+
+    <h2>9. Objetos</h2>
+    <pre>
+let estudiante = {
+    nombre: "Diego",
+    edad: 20,
+    calificaciones: [8, 9, 7],
+    saludar: function() {
+        return "Hola, soy " + this.nombre;
+    }
+};
+
+console.log(estudiante.nombre);        // "Diego"
+console.log(estudiante["edad"]);       // 20
+console.log(estudiante.saludar());     // "Hola, soy Diego"
+
+// Agregar propiedad
+estudiante.ciudad = "Córdoba";
+
+// Eliminar propiedad
+delete estudiante.edad;
+    </pre>
+
+    <h2>10. Closures (Funciones que capturan variables)</h2>
+    <pre>
+function crearContador() {
+    let contador = 0;  // Variable privada
+    
+    return function() {
+        contador++;
+        return contador;
+    };
+}
+
+let contador1 = crearContador();
+console.log(contador1());  // 1
+console.log(contador1());  // 2
+console.log(contador1());  // 3
+
+let contador2 = crearContador();
+console.log(contador2());  // 1 (contador separado)
+    </pre>
+
+    <h2>11. Destructuring (Desempaquetado)</h2>
+    <pre>
+// Array destructuring
+let [a, b, c] = [10, 20, 30];
+console.log(a, b, c);  // 10, 20, 30
+
+// Object destructuring
+let { nombre, edad } = { nombre: "López", edad: 25, ciudad: "Rosario" };
+console.log(nombre, edad);  // "López", 25
+
+// En funciones
+function mostrarPersona({nombre, edad}) {
+    console.log(`${nombre} tiene ${edad} años`);
+}
+
+mostrarPersona({ nombre: "Elena", edad: 22 });  // "Elena tiene 22 años"
+    </pre>
+
+    <h2>12. Template Literals (Strings mejorados)</h2>
+    <pre>
+let nombre = "Fernando";
+let edad = 23;
+
+// Concatenación vieja
+console.log("Hola, " + nombre + ", tienes " + edad + " años");
+
+// Template literal (mejor)
+console.log(\`Hola, \${nombre}, tienes \${edad} años\`);
+
+// Múltiples líneas
+let mensaje = \`
+    Esto es una
+    cadena de múltiples
+    líneas sin problemas
+\`;
+console.log(mensaje);
+    </pre>
+
+    <div class="output">
+        <strong>💡 Consejo:</strong> Abre la consola del navegador (F12 → Console) 
+        y ejecuta estos ejemplos para verlos en acción.
+    </div>
+
+    <script>
+        // Ejemplos ejecutables en la consola
+        console.log("=== VARIABLES ===");
+        let nombre = "Juan";
+        const edad = 25;
+        console.log(nombre, edad);
+
+        console.log("\n=== FUNCIONES ===");
+        function sumar(a, b) {
+            return a + b;
+        }
+        console.log("5 + 3 =", sumar(5, 3));
+
+        const multiplicar = (a, b) => a * b;
+        console.log("4 × 5 =", multiplicar(4, 5));
+
+        console.log("\n=== ARRAYS ===");
+        let numeros = [1, 2, 3, 4, 5];
+        let dobles = numeros.map(x => x * 2);
+        let pares = numeros.filter(x => x % 2 === 0);
+        console.log("Originales:", numeros);
+        console.log("Dobles:", dobles);
+        console.log("Pares:", pares);
+
+        console.log("\n=== OBJETOS ===");
+        let estudiante = {
+            nombre: "Diego",
+            edad: 20,
+            saludar() {
+                return `Hola, soy ${this.nombre}`;
+            }
+        };
+        console.log(estudiante.saludar());
+
+        console.log("\n=== DESTRUCTURING ===");
+        let [a, b] = [10, 20];
+        console.log("a =", a, ", b =", b);
+
+        let { nombre: n, edad: e } = { nombre: "Ana", edad: 21 };
+        console.log(`${n} tiene ${e} años`);
+
+        console.log("\n✅ Todos los ejemplos se ejecutaron correctamente");
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Inline - Concepto 03</title>
+</head>
+<body>
+    <h1 style="color: #2c3e50; text-align: center; margin-bottom: 30px;">
+        CSS Inline
+    </h1>
+    
+    <p style="font-size: 16px; line-height: 1.6; color: #555; margin: 20px;">
+        Los estilos CSS inline se aplican directamente en el atributo <code>style</code> 
+        de cada elemento HTML. Esto NO es una buena práctica para proyectos grandes
+        porque mezcla contenido con presentación.
+    </p>
+    
+    <div style="background-color: #e8f4f8; border-left: 4px solid #2c3e50; padding: 20px; margin: 20px 0;">
+        <h2 style="color: #2c3e50; margin-top: 0;">Ventajas vs Desventajas</h2>
+        
+        <p style="color: #27ae60; font-weight: bold;">✓ Ventaja:</p>
+        <ul style="color: #555;">
+            <li>Rápido para prototipos</li>
+            <li>Los estilos se aplican inmediatamente sin archivo CSS</li>
+            <li>Útil para casos puntuales</li>
+        </ul>
+        
+        <p style="color: #e74c3c; font-weight: bold;">✗ Desventaja:</p>
+        <ul style="color: #555;">
+            <li>No reutilizable</li>
+            <li>HTML muy largo y difícil de leer</li>
+            <li>Difícil de mantener</li>
+            <li>No puede cached por navegador</li>
+        </ul>
+    </div>
+    
+    <h2 style="background-color: #f39c12; color: white; padding: 15px; margin: 20px 0;">
+        Ejemplos de Estilos Inline
+    </h2>
+    
+    <button style="background-color: #3498db; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; margin: 10px;">
+        Botón Azul
+    </button>
+    
+    <button style="background-color: #e74c3c; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; margin: 10px;">
+        Botón Rojo
+    </button>
+    
+    <button style="background-color: #27ae60; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; margin: 10px;">
+        Botón Verde
+    </button>
+    
+    <div style="display: flex; gap: 15px; margin: 20px 0; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 200px; background-color: #ecf0f1; padding: 15px; border-radius: 5px;">
+            <h3 style="color: #2c3e50; margin-top: 0;">Tarjeta 1</h3>
+            <p style="color: #7f8c8d;">Contenido de la tarjeta con flex layout.</p>
+        </div>
+        
+        <div style="flex: 1; min-width: 200px; background-color: #ecf0f1; padding: 15px; border-radius: 5px;">
+            <h3 style="color: #2c3e50; margin-top: 0;">Tarjeta 2</h3>
+            <p style="color: #7f8c8d;">Contenido de la tarjeta con flex layout.</p>
+        </div>
+        
+        <div style="flex: 1; min-width: 200px; background-color: #ecf0f1; padding: 15px; border-radius: 5px;">
+            <h3 style="color: #2c3e50; margin-top: 0;">Tarjeta 3</h3>
+            <p style="color: #7f8c8d;">Contenido de la tarjeta con flex layout.</p>
+        </div>
+    </div>
+    
+    <div style="background-color: #fff3cd; border: 1px solid #ffc107; padding: 20px; margin: 20px 0; border-radius: 5px;">
+        <p style="color: #856404; margin: 0;">
+            <strong>Nota:</strong> Para proyectos reales, siempre usa archivos CSS externos 
+            (concepto 04). Los estilos inline son solo para aprender o casos muy específicos.
+        </p>
+    </div>
+    
+    <footer style="background-color: #34495e; color: white; padding: 20px; margin-top: 30px; text-align: center;">
+        <p style="margin: 0;">&copy; 2026 UTN - Ejemplo de CSS Inline</p>
+    </footer>
+</body>
+</html>

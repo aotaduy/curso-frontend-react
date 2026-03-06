@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React CRUD TodoList - Concepto 12</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        #root {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .app {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            padding: 30px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-top: 0;
+        }
+        .form-group {
+            margin: 15px 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #34495e;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        textarea {
+            resize: vertical;
+            height: 80px;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+        }
+        button {
+            background-color: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background-color: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        .todo-list {
+            margin-top: 30px;
+        }
+        .todo-item {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+        .todo-item:hover {
+            background-color: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .todo-item.completed {
+            opacity: 0.6;
+            border-left-color: #28a745;
+        }
+        .todo-item.completed .todo-title {
+            text-decoration: line-through;
+            color: #999;
+        }
+        .todo-content {
+            flex-grow: 1;
+        }
+        .todo-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 0 0 5px 0;
+        }
+        .todo-description {
+            color: #666;
+            font-size: 13px;
+            margin: 0;
+        }
+        .todo-actions {
+            display: flex;
+            gap: 5px;
+        }
+        .btn-check, .btn-delete {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .btn-check {
+            background-color: #28a745;
+            color: white;
+        }
+        .btn-check:hover {
+            background-color: #218838;
+        }
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+        }
+        .btn-delete:hover {
+            background-color: #c82333;
+        }
+        .loading {
+            text-align: center;
+            color: #667eea;
+            font-weight: bold;
+        }
+        .stats {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            text-align: center;
+            color: #34495e;
+        }
+        .stats strong {
+            color: #667eea;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <!-- React desde CDN -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel para JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        function TodoApp() {
+            const [todos, setTodos] = useState([]);
+            const [loading, setLoading] = useState(true);
+            const [newTitle, setNewTitle] = useState('');
+            const [newBody, setNewBody] = useState('');
+
+            // GET - Cargar todos al montar
+            useEffect(() => {
+                fetch('https://jsonplaceholder.typicode.com/todos?_limit=10')
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Todos cargados:', data);
+                        setTodos(data);
+                        setLoading(false);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        setLoading(false);
+                    });
+            }, []);
+
+            // POST - Crear nuevo TODO
+            const crearTodo = (e) => {
+                e.preventDefault();
+
+                if (!newTitle.trim()) {
+                    alert('Por favor ingresa un título');
+                    return;
+                }
+
+                // Crear objeto local (JSONPlaceholder retorna ID 201, pero lo simulamos)
+                const nuevoTodo = {
+                    id: Math.max(...todos.map(t => t.id), 0) + 1,
+                    title: newTitle,
+                    body: newBody,
+                    completed: false,
+                    userId: 1
+                };
+
+                // POST a la API
+                fetch('https://jsonplaceholder.typicode.com/todos', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(nuevoTodo)
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Todo creado:', data);
+                        
+                        // Agregar a la lista local con ID real del cliente
+                        setTodos([...todos, nuevoTodo]);
+                        
+                        // Limpiar formulario
+                        setNewTitle('');
+                        setNewBody('');
+                    })
+                    .catch(error => console.error('Error:', error));
+            };
+
+            // PUT - Marcar como completado
+            const toggleTodo = (id) => {
+                const todo = todos.find(t => t.id === id);
+                
+                fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        ...todo,
+                        completed: !todo.completed
+                    })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Todo actualizado:', data);
+                        
+                        // Actualizar en estado local
+                        setTodos(todos.map(t => 
+                            t.id === id ? { ...t, completed: !t.completed } : t
+                        ));
+                    })
+                    .catch(error => console.error('Error:', error));
+            };
+
+            // DELETE - Eliminar TODO
+            const eliminarTodo = (id) => {
+                fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(response => {
+                        console.log('Todo eliminado, status:', response.status);
+                        
+                        // Eliminar del estado local
+                        setTodos(todos.filter(t => t.id !== id));
+                    })
+                    .catch(error => console.error('Error:', error));
+            };
+
+            const completados = todos.filter(t => t.completed).length;
+            const pendientes = todos.length - completados;
+
+            return (
+                <div className="app">
+                    <h1>📋 TODO List con React</h1>
+
+                    <form onSubmit={crearTodo}>
+                        <div className="form-group">
+                            <label htmlFor="titulo">Título:</label>
+                            <input
+                                id="titulo"
+                                type="text"
+                                placeholder="¿Qué necesitas hacer?"
+                                value={newTitle}
+                                onChange={(e) => setNewTitle(e.target.value)}
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="descripcion">Descripción (opcional):</label>
+                            <textarea
+                                id="descripcion"
+                                placeholder="Detalles adicionales..."
+                                value={newBody}
+                                onChange={(e) => setNewBody(e.target.value)}
+                            ></textarea>
+                        </div>
+
+                        <button type="submit">➕ Agregar TODO</button>
+                    </form>
+
+                    {loading ? (
+                        <div className="loading">⏳ Cargando TODOs...</div>
+                    ) : (
+                        <>
+                            <div className="stats">
+                                Total: <strong>{todos.length}</strong> | 
+                                Completados: <strong>{completados}</strong> | 
+                                Pendientes: <strong>{pendientes}</strong>
+                            </div>
+
+                            <div className="todo-list">
+                                <h2 style={{ margin: '0 0 15px 0', color: '#2c3e50' }}>
+                                    Mis TODOs ({todos.length})
+                                </h2>
+                                
+                                {todos.length === 0 ? (
+                                    <p style={{ textAlign: 'center', color: '#999' }}>
+                                        No hay TODOs. ¡Crea uno!
+                                    </p>
+                                ) : (
+                                    todos.map(todo => (
+                                        <div 
+                                            key={todo.id} 
+                                            className={`todo-item ${todo.completed ? 'completed' : ''}`}
+                                        >
+                                            <div className="todo-content">
+                                                <p className="todo-title">
+                                                    {todo.completed ? '✅' : '⭕'} {todo.title}
+                                                </p>
+                                                {todo.body && (
+                                                    <p className="todo-description">{todo.body}</p>
+                                                )}
+                                            </div>
+                                            <div className="todo-actions">
+                                                <button 
+                                                    className="btn-check"
+                                                    onClick={() => toggleTodo(todo.id)}
+                                                >
+                                                    {todo.completed ? '↩️' : '✓'}
+                                                </button>
+                                                <button 
+                                                    className="btn-delete"
+                                                    onClick={() => eliminarTodo(todo.id)}
+                                                >
+                                                    🗑️
+                                                </button>
+                                            </div>
+                                        </div>
+                                    ))
+                                )}
+                            </div>
+
+                            <div style={{
+                                backgroundColor: '#f0f4ff',
+                                padding: '15px',
+                                borderRadius: '5px',
+                                marginTop: '20px',
+                                fontSize: '13px',
+                                color: '#34495e'
+                            }}>
+                                <strong>ℹ️ Nota:</strong> Los cambios en JSONPlaceholder no se guardan permanentemente. 
+                                Recarga la página para ver los datos originales.
+                            </div>
+                        </>
+                    )}
+                </div>
+            );
+        }
+
+        ReactDOM.render(<TodoApp />, document.getElementById('root'));
+    </script>
+</body>
+</html>

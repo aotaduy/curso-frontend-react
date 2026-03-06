@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Básico - GET - Concepto 11</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        #root {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin: 15px 0;
+        }
+        .user-card {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 4px solid #3498db;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .loading {
+            color: #f39c12;
+            font-weight: bold;
+        }
+        .error {
+            color: #e74c3c;
+            background-color: #f8d7da;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background-color: #ecf0f1;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        li:hover {
+            background-color: #d5dbdb;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <!-- React desde CDN -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel para JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // Componente principal de usuarios
+        function UsuariosList() {
+            const [usuarios, setUsuarios] = useState([]);
+            const [loading, setLoading] = useState(true);
+            const [error, setError] = useState(null);
+            const [usuarioSeleccionado, setUsuarioSeleccionado] = useState(null);
+
+            // GET - Cargar lista de usuarios
+            useEffect(() => {
+                console.log('Componente montado, cargando usuarios...');
+                
+                fetch('https://jsonplaceholder.typicode.com/users')
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Usuarios cargados:', data);
+                        setUsuarios(data);
+                        setLoading(false);
+                    })
+                    .catch(err => {
+                        console.error('Error:', err);
+                        setError(err.message);
+                        setLoading(false);
+                    });
+            }, []); // Array vacío = ejecutar solo al montar
+
+            if (loading) {
+                return <div className="card" style={{ textAlign: 'center' }}>
+                    <p className="loading">⏳ Cargando usuarios...</p>
+                </div>;
+            }
+
+            if (error) {
+                return <div className="error">❌ Error: {error}</div>;
+            }
+
+            return (
+                <div>
+                    <h1>📱 React Básico - GET Usuarios</h1>
+                    <div className="card">
+                        <p>Este ejemplo demuestra:</p>
+                        <ul>
+                            <li>✓ Componentes funcionales</li>
+                            <li>✓ useState para estado</li>
+                            <li>✓ useEffect para efectos (Fetch)</li>
+                            <li>✓ GET request a API</li>
+                            <li>✓ Manejo de loading y errores</li>
+                        </ul>
+                    </div>
+
+                    <div className="card">
+                        <h2>Usuarios ({usuarios.length})</h2>
+                        <p style={{ color: '#666' }}>Haz clic en un usuario para ver detalles</p>
+                        <ul>
+                            {usuarios.map(usuario => (
+                                <li 
+                                    key={usuario.id}
+                                    onClick={() => setUsuarioSeleccionado(usuario)}
+                                    style={{
+                                        backgroundColor: usuarioSeleccionado?.id === usuario.id ? '#3498db' : '#ecf0f1',
+                                        color: usuarioSeleccionado?.id === usuario.id ? 'white' : 'black'
+                                    }}
+                                >
+                                    <strong>#{usuario.id}</strong> - {usuario.name}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {usuarioSeleccionado && (
+                        <div className="card">
+                            <h2>Detalles del Usuario</h2>
+                            <button onClick={() => setUsuarioSeleccionado(null)}>Cerrar</button>
+                            <div className="user-card">
+                                <p><strong>Nombre:</strong> {usuarioSeleccionado.name}</p>
+                                <p><strong>Username:</strong> @{usuarioSeleccionado.username}</p>
+                                <p><strong>Email:</strong> {usuarioSeleccionado.email}</p>
+                                <p><strong>Teléfono:</strong> {usuarioSeleccionado.phone}</p>
+                                <p><strong>Website:</strong> {usuarioSeleccionado.website}</p>
+                                <p><strong>Ciudad:</strong> {usuarioSeleccionado.address.city}</p>
+                                <p><strong>Empresa:</strong> {usuarioSeleccionado.company.name}</p>
+                            </div>
+                        </div>
+                    )}
+
+                    <div className="card" style={{ backgroundColor: '#fff9e6', border: '1px solid #f39c12' }}>
+                        <h3>💡 Cómo funciona:</h3>
+                        <p><strong>useState():</strong> Crea variables de estado que actualizan la UI automáticamente</p>
+                        <p><strong>useEffect():</strong> Ejecuta código cuando el componente se monta (GET request)</p>
+                        <p><strong>Rendering condicional:</strong> Muestra loading/error/datos según el estado</p>
+                        <p><strong>map():</strong> Renderiza una lista de elementos</p>
+                    </div>
+                </div>
+            );
+        }
+
+        // Renderizar en el DOM
+        ReactDOM.render(<UsuariosList />, document.getElementById('root'));
+    </script>
+</body>
+</html>

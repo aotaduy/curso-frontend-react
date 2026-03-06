@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Semántico - Concepto 02</title>
+</head>
+<body>
+    <!-- HEADER: Encabezado principal de la página -->
+    <header>
+        <h1>Universidad Tecnológica Nacional</h1>
+        <p>Desarrollo de Software Frontend</p>
+    </header>
+    
+    <!-- NAV: Navegación principal -->
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#cursos">Cursos</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    
+    <!-- MAIN: Contenido principal único de la página -->
+    <main>
+        <!-- ARTICLE: Contenido independiente (podría publicarse por sí solo) -->
+        <article id="inicio">
+            <h2>Bienvenido al Curso</h2>
+            <p>Este es un ejemplo de estructura semántica HTML. Los tags como 
+               <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code> y 
+               <code>&lt;aside&gt;</code> dan significado al contenido.</p>
+        </article>
+        
+        <!-- SECTION: Agrupa contenido temático relacionado -->
+        <section id="cursos">
+            <h2>Cursos Disponibles</h2>
+            
+            <article>
+                <h3>Hipertexto y Frontend</h3>
+                <p>Aprenderás HTML, CSS y JavaScript fundamental.</p>
+            </article>
+            
+            <article>
+                <h3>React Avanzado</h3>
+                <p>Componentes, hooks y state management con React.</p>
+            </article>
+            
+            <article>
+                <h3>Backend con Node.js</h3>
+                <p>APIs REST, bases de datos y autenticación.</p>
+            </article>
+        </section>
+        
+        <!-- SECTION: Otra sección temática -->
+        <section id="sobre">
+            <h2>Sobre Este Programa</h2>
+            <p>Contenido teórico-práctico donde aprenderás las tecnologías 
+               más demandadas en la industria.</p>
+            
+            <!-- ASIDE: Contenido secundario, podría estar en una barra lateral -->
+            <aside>
+                <h3>Requisitos</h3>
+                <ul>
+                    <li>Lógica de programación</li>
+                    <li>Conocimientos básicos de internet</li>
+                    <li>Dedicación y práctica</li>
+                </ul>
+            </aside>
+        </section>
+        
+        <!-- SECTION: Formulario de contacto -->
+        <section id="contacto">
+            <h2>Ponte en Contacto</h2>
+            <form action="https://jsonplaceholder.typicode.com/posts" method="POST">
+                <div>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div>
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+                </div>
+                
+                <button type="submit">Enviar Mensaje</button>
+            </form>
+        </section>
+    </main>
+    
+    <!-- FOOTER: Pie de página -->
+    <footer>
+        <p>&copy; 2026 UTN - Universidad Tecnológica Nacional</p>
+        <p>Desarrollado con propósitos educativos</p>
+    </footer>
+</body>
+</html>

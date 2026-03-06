@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Archivo Externo - Concepto 04</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>CSS en Archivo Externo</h1>
+        
+        <p>Este ejemplo demuestra la <strong>mejor práctica</strong> para aplicar estilos CSS: 
+           en un archivo externo separado del HTML.</p>
+        
+        <div class="box-info">
+            <h2>Ventajas</h2>
+            <ul>
+                <li>Separación de contenido y presentación</li>
+                <li>Reutilización de estilos en múltiples páginas</li>
+                <li>Fácil de mantener y actualizar</li>
+                <li>El navegador cachea el archivo CSS (mejor rendimiento)</li>
+                <li>HTML más limpio y legible</li>
+            </ul>
+        </div>
+        
+        <h2>Elementos Estilizados</h2>
+        
+        <div class="box-info">
+            <h3>Caja de Información</h3>
+            <p>Esta es una caja con estilo personalizado. Usa la clase 
+               <code>.box-info</code> definida en styles.css.</p>
+        </div>
+        
+        <div class="box-warning">
+            <h3>Caja de Advertencia</h3>
+            <p>Esta es una caja de advertencia. Usa la clase <code>.box-warning</code>.</p>
+        </div>
+        
+        <h2>Botones</h2>
+        <button class="btn btn-primary">Botón Primario</button>
+        <button class="btn btn-danger">Botón Peligro</button>
+        <button class="btn btn-success">Botón Éxito</button>
+        
+        <h2>Tarjetas (Cards)</h2>
+        <div class="card">
+            <h3>Tarjeta 1</h3>
+            <p>Esta es una tarjeta con estilo. Los estilos se heredan del CSS externo.</p>
+            <button class="btn btn-primary">Leer más</button>
+        </div>
+        
+        <div class="card">
+            <h3>Tarjeta 2</h3>
+            <p>Todas las tarjetas comparten el mismo estilo. Cambiar styles.css 
+               actualiza todas automáticamente.</p>
+            <button class="btn btn-primary">Leer más</button>
+        </div>
+        
+        <div class="card">
+            <h3>Tarjeta 3</h3>
+            <p>Este es un ejemplo de componentes reutilizables con CSS.</p>
+            <button class="btn btn-primary">Leer más</button>
+        </div>
+        
+        <h2>Tabla de Ejemplo</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Juan García</td>
+                    <td>juan@example.com</td>
+                    <td>Activo</td>
+                </tr>
+                <tr>
+                    <td>María López</td>
+                    <td>maria@example.com</td>
+                    <td>Activo</td>
+                </tr>
+                <tr>
+                    <td>Carlos Martínez</td>
+                    <td>carlos@example.com</td>
+                    <td>Inactivo</td>
+                </tr>
+                <tr>
+                    <td>Ana Rodríguez</td>
+                    <td>ana@example.com</td>
+                    <td>Activo</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <footer>
+        <p>&copy; 2026 UTN - Ejemplo de CSS en Archivo Externo</p>
+    </footer>
+</body>
+</html>
