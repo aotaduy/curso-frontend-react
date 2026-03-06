@@ -84,33 +84,36 @@ jobs:
             cat >> "$output_file" << 'HTMLFOOT'
               </article>
               <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-              <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
-              <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/typescript.min.js"></script>
-              <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/html.min.js"></script>
-              <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
-              <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
-              <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/java.min.js"></script>
-              <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
-              <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/powershell.min.js"></script>
               <script type="module">
                   import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
                   
                   // Initialize mermaid
-                  mermaid.initialize({ startOnLoad: false, theme: 'dark' });
+                  mermaid.initialize({ 
+                      startOnLoad: false, 
+                      theme: 'dark',
+                      securityLevel: 'loose'
+                  });
                   
                   // Convert mermaid code blocks to diagrams
                   document.querySelectorAll('pre code.language-mermaid').forEach((block) => {
                       const pre = block.parentElement;
                       const mermaidDiv = document.createElement('div');
                       mermaidDiv.className = 'mermaid';
-                      mermaidDiv.textContent = block.textContent;
+                      // Decode HTML entities and get clean text
+                      const txt = document.createElement('textarea');
+                      txt.innerHTML = block.innerHTML;
+                      mermaidDiv.textContent = txt.value;
                       pre.replaceWith(mermaidDiv);
                   });
                   
                   // Run mermaid rendering
-                  await mermaid.run({
-                      querySelector: '.mermaid',
-                  });
+                  try {
+                      await mermaid.run({
+                          querySelector: '.mermaid',
+                      });
+                  } catch (e) {
+                      console.error('Mermaid rendering error:', e);
+                  }
                   
                   // Apply syntax highlighting to non-mermaid code blocks
                   document.querySelectorAll('pre code:not(.language-mermaid)').forEach((block) => {
