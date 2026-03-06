@@ -99,10 +99,9 @@ jobs:
                       const pre = block.parentElement;
                       const mermaidDiv = document.createElement('div');
                       mermaidDiv.className = 'mermaid';
-                      // Decode HTML entities and get clean text
-                      const txt = document.createElement('textarea');
-                      txt.innerHTML = block.innerHTML;
-                      mermaidDiv.textContent = txt.value;
+                      // Get the text content and preserve <br/> tags for mermaid
+                      let text = block.textContent || block.innerText;
+                      mermaidDiv.textContent = text;
                       pre.replaceWith(mermaidDiv);
                   });
                   
@@ -113,6 +112,14 @@ jobs:
                       });
                   } catch (e) {
                       console.error('Mermaid rendering error:', e);
+                      // Show the error in the diagram div
+                      document.querySelectorAll('.mermaid').forEach(div => {
+                          if (!div.hasAttribute('data-processed')) {
+                              div.style.color = 'red';
+                              div.style.whiteSpace = 'pre-wrap';
+                              div.textContent = 'Mermaid error: ' + e.message;
+                          }
+                      });
                   }
                   
                   // Apply syntax highlighting to non-mermaid code blocks
