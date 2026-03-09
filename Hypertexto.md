@@ -2,7 +2,7 @@
 
 ## Definición
 
-El hipertexto es un sistema de organización de información donde los documentos están interconectados mediante enlaces (links o hipervínculos) que permiten navegación no lineal. A diferencia de texto tradicional (lineal, secuencial), el hipertexto permite al lector elegir su propio camino entre documentos relacionados. En la Web, HTML (HyperText Markup Language) es el lenguaje estándar para crear documentos hipertextuales.
+El hipertexto es un sistema de organización de información donde los documentos están interconectados mediante enlaces (links o hipervínculos) que permiten navegación no lineal. A diferencia de texto tradicional (lineal, secuencial), el hipertexto permite al lector elegir su propio camino entre documentos relacionados. En la Web, HTML (HyperText Markup Language) es el lenguaje estándar para crear este tipo de sistema.
 
 ## Conceptos Clave
 
@@ -17,7 +17,7 @@ El hipertexto es un sistema de organización de información donde los documento
 
 ### Definición
 
-HTML (HyperText Markup Language) es el lenguaje de marcado estándar para crear documentos web. Define la estructura y semántica del contenido mediante etiquetas (tags) que encierran elementos: párrafos, encabezados, enlaces, imágenes, formularios, etc. HTML describe *qué es* cada parte del contenido (semántica), no *cómo se ve* (eso es CSS). Los navegadores interpretan HTML y construyen el DOM (Document Object Model).
+HTML (HyperText Markup Language) es el lenguaje estándar para crear documentos web. Define la estructura y semántica del contenido mediante etiquetas (tags) que encierran elementos: párrafos, encabezados, enlaces, imágenes, formularios, etc. HTML describe *qué es* cada parte del contenido (semántica), no *cómo se ve* (eso es CSS). Los navegadores interpretan HTML y construyen el DOM (Document Object Model).
 
 ### Conceptos Clave
 
@@ -42,7 +42,6 @@ HTML (HyperText Markup Language) es el lenguaje de marcado estándar para crear 
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Encabezado de la página -->
     <header>
         <h1>Bienvenidos a la UTN</h1>
         <nav>
@@ -178,10 +177,10 @@ graph TD
 ```
 
 **Explicación del DOM:**
-- El DOM es la representación en memoria del HTML como árbol de nodos
-- JavaScript puede manipular el DOM para cambiar contenido dinámicamente
+- El DOM es la representación en memoria del Documento como árbol de nodos generado a partir de la interpretacion del HTML
+- JavaScript puede manipular el DOM para cambiar contenido dinámicamente incluso generarlo casi completamente
 - Cada tag HTML se convierte en un nodo del árbol
-- Los nodos tienen relaciones: parent (padre), children (hijos), siblings (hermanos)
+- Los nodos tienen relaciones: parent (padre), children (hijos), siblings (hermanos) y propiedades especificas
 
 ---
 
@@ -195,7 +194,7 @@ CSS (Cascading Style Sheets) es el lenguaje de hojas de estilo que define la pre
 
 - **Selectores**: Patrones que identifican qué elementos HTML aplicar estilos (ej: `h1`, `.clase`, `#id`)
 - **Propiedades y valores**: `color: blue;`, `font-size: 16px;`, `margin: 10px;`
-- **Cascada**: Múltiples reglas pueden aplicar al mismo elemento; especificidad y orden determinan cuál gana
+- **Cascada**: Múltiples reglas pueden aplicar al mismo elemento; se usa especificidad y orden determinan cuál gana
 - **Especificidad**: Prioridad de selectores: inline styles > IDs > clases > tags
 - **Box Model**: Todo elemento es una caja con content, padding, border, margin
 - **Layout**: Flexbox (1-dimensional) y Grid (2-dimensional) para posicionar elementos
@@ -645,17 +644,17 @@ graph TB
     C --> D[div.container]
     D --> E[button]
     
-    E -.Click!.-> F[1. Capturing Phase<br/>document → button]
-    F --> G[2. Target Phase<br/>button ejecuta handler]
-    G --> H[3. Bubbling Phase<br/>button → document]
+    E -.Click!.-> F[1. Capturing Phase document → button]
+    F --> G[2. Target Phase button ejecuta handler]
+    G --> H[3. Bubbling Phase button → document]
     
     style E fill:#ff6b6b
     style G fill:#ffd93d
     style H fill:#6bcf7f
     
-    I[addEventListener options<br/>{capture: true/false}]
+    I[addEventListener options{capture: true/false}]
     
-    J[Por default, eventos<br/>se escuchan en bubbling]
+    J[Por default, eventos se escuchan en bubbling]
 ```
 
 **Ejemplo de Event Bubbling:**
@@ -691,7 +690,7 @@ hijo.addEventListener('click', (event) => {
 
 ### Definición
 
-El DOM (Document Object Model) es una representación en árbol de la estructura HTML de una página web, accesible y manipulable mediante JavaScript. El navegador crea el DOM al parsear el HTML; cada elemento HTML se convierte en un nodo (node) del árbol. JavaScript puede acceder, modificar, crear y eliminar nodos dinámicamente, permitiendo actualizar la página sin recargar. El DOM es la interfaz entre HTML (estructura estática) y JavaScript (comportamiento dinámico).
+El DOM (Document Object Model) es una representación en árbol de objetos de la estructura HTML de una página web, accesible y manipulable mediante JavaScript. El navegador crea el DOM al parsear el HTML; cada elemento HTML se convierte en un nodo (node) del árbol. JavaScript puede acceder, modificar, crear y eliminar nodos dinámicamente, permitiendo actualizar la página sin recargar. El DOM es la interfaz entre HTML (estructura estática) y JavaScript (comportamiento dinámico).
 
 ### Conceptos Clave
 
@@ -1001,7 +1000,7 @@ graph TD
 
 ### Definición
 
-Los frameworks y librerías JavaScript son herramientas que facilitan el desarrollo de aplicaciones web complejas, proporcionando estructura, patrones y funcionalidades pre-construidas. Una **librería** (como React) es una colección de funciones que tú controlas y llamas cuando necesitas; un **framework** (como Angular) es una estructura más opinionada que controla el flujo de tu aplicación. Ambos solucionan problemas comunes: gestión de estado, renderizado eficiente, componentes reutilizables.
+Los frameworks y librerías JavaScript son herramientas que facilitan el desarrollo de aplicaciones web complejas, proporcionando estructura, patrones y funcionalidades pre-construidas. Una **librería** (como React) es una colección de funciones que tú controlas y llamas cuando necesitas; un **framework** (como Angular) es una estructura más completa y opinionada que controla el flujo de tu aplicación. Ambos solucionan problemas comunes: gestión de estado, renderizado eficiente, componentes reutilizables. El framework proporciona mas herramientra y estandares para los problems mas comunes, routing, http, ssr, validaciones, forms. En la libreria hay mas libertad para elegir diferentes herramientas y librerias accesorias.
 
 ### Conceptos Clave
 
@@ -1084,7 +1083,7 @@ export class ContadorComponent {
 ### React
 
 #### Definición
-React es una librería de Facebook enfocada específicamente en construir interfaces de usuario mediante componentes. Es menos opinionada que Angular (tú eliges routing, state management, etc.), usa JSX (mezcla JS y HTML), y tiene ecosistema enorme. Aprenderán React en profundidad en el siguiente documento; es la tecnología que usaremos en el curso.
+React es una librería de Meta (Facebook) enfocada específicamente en construir interfaces de usuario mediante componentes. Es menos opinionada que Angular (tú eliges routing, state management, etc.), usa JSX (mezcla JS y HTML), y tiene ecosistema enorme. 
 
 #### Conceptos Clave
 - **Componentes funcionales**: Funciones JavaScript que retornan JSX (UI)
