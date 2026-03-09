@@ -30,8 +30,8 @@ jobs:
         with:
           node-version: '20'
       
-      - name: Install markdown converter
-        run: npm install -g markdown-it markdown-it-highlightjs
+      - name: Install markdown converter deps
+        run: npm install --no-save markdown-it
       
       - name: Build site
         run: |
