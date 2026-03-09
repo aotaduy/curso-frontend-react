@@ -46,16 +46,16 @@ HTML (HyperText Markup Language) es el lenguaje estándar para crear documentos 
         <h1>Bienvenidos a la UTN</h1>
         <nav>
             <ul>
-                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#start">Inicio</a></li>
                 <li><a href="#about">Sobre nosotros</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#contact">Contacto</a></li>
             </ul>
         </nav>
     </header>
     
     <!-- Contenido principal -->
     <main>
-        <article id="inicio">
+        <article id="start">
             <h2>Desarrollo de Software</h2>
             <p>Este curso cubre <strong>frontend</strong> y <strong>backend</strong> con tecnologías modernas.</p>
             <p>Aprenderemos HTML, CSS, JavaScript y <em>React</em>.</p>
@@ -68,17 +68,17 @@ HTML (HyperText Markup Language) es el lenguaje estándar para crear documentos 
         </section>
         
         <!-- Formulario -->
-        <section id="contacto">
+        <section id="contact">
             <h2>Contacto</h2>
             <form action="/submit" method="POST">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required>
                 
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
                 
-                <label for="mensaje">Mensaje:</label>
-                <textarea id="mensaje" name="mensaje" rows="4"></textarea>
+                <label for="message">Mensaje:</label>
+                <textarea id="message" name="message" rows="4"></textarea>
                 
                 <button type="submit">Enviar</button>
             </form>
@@ -221,7 +221,7 @@ header h1 {
 }
 
 /* Selector de clase (inicia con .) */
-.boton {
+.button {
     background-color: #007bff;
     color: white;
     padding: 10px 20px;
@@ -230,12 +230,12 @@ header h1 {
     cursor: pointer;
 }
 
-.boton:hover {
+.button:hover {
     background-color: #0056b3;  /* Cambia color al pasar mouse */
 }
 
 /* Selector de ID (inicia con #) */
-#contacto {
+#contact {
     background-color: white;
     padding: 20px;
     margin: 20px;
@@ -522,8 +522,8 @@ pares = list(filter(lambda x: x % 2 == 0, numeros)) # [2, 4]
 ```javascript
 // Seleccionar elementos
 const titulo = document.querySelector('h1');
-const botones = document.querySelectorAll('.boton');
-const formulario = document.getElementById('miForm');
+const buttons = document.querySelectorAll('.button');
+const form = document.getElementById('myForm');
 
 // Modificar contenido
 titulo.textContent = '¡Título nuevo!';
@@ -545,25 +545,25 @@ parrafo.className = 'texto';
 document.body.appendChild(parrafo);
 
 // Eventos
-const boton = document.querySelector('#miBoton');
+const button = document.querySelector('#myButton');
 
-boton.addEventListener('click', function() {
+button.addEventListener('click', function() {
     alert('¡Botón clickeado!');
 });
 
 // Event listener con arrow function
-boton.addEventListener('click', () => {
+button.addEventListener('click', () => {
     console.log('Click detectado');
 });
 
 // Evento de formulario
-formulario.addEventListener('submit', (event) => {
+form.addEventListener('submit', (event) => {
     event.preventDefault();  // Evita que el form se envíe y recargue la página
     
-    const nombre = document.querySelector('#nombre').value;
+    const name = document.querySelector('#name').value;
     const email = document.querySelector('#email').value;
     
-    console.log('Datos:', {nombre, email});
+    console.log('Datos:', {name, email});
     
     // Aquí harías un fetch() para enviar datos al servidor
 });
@@ -659,22 +659,22 @@ graph TB
 
 **Ejemplo de Event Bubbling:**
 ```html
-<div id="padre" style="padding: 50px; background: lightblue;">
+<div id="parent" style="padding: 50px; background: lightblue;">
     Padre
-    <button id="hijo">Hijo (Click aquí)</button>
+    <button id="child">Hijo (Click aquí)</button>
 </div>
 ```
 
 ```javascript
-const padre = document.getElementById('padre');
-const hijo = document.getElementById('hijo');
+const parent = document.getElementById('parent');
+const child = document.getElementById('child');
 
 // Ambos ejecutarán cuando clickees el botón
-padre.addEventListener('click', () => {
+parent.addEventListener('click', () => {
     console.log('Click en padre');
 });
 
-hijo.addEventListener('click', (event) => {
+child.addEventListener('click', (event) => {
     console.log('Click en hijo');
     // event.stopPropagation();  // Descomentar para detener bubbling
 });
@@ -716,8 +716,8 @@ El DOM (Document Object Model) es una representación en árbol de objetos de la
             <h1 id="titulo">Bienvenido</h1>
             <nav>
                 <ul>
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#start">Inicio</a></li>
+                    <li><a href="#about">Sobre</a></li>
                 </ul>
             </nav>
         </header>

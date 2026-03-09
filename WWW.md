@@ -944,8 +944,8 @@ titulo.style.fontSize = '32px';
 titulo.classList.add('destacado');
 
 // Escuchar evento
-const boton = document.querySelector('#miBoton');
-boton.addEventListener('click', () => {
+const button = document.querySelector('#myButton');
+button.addEventListener('click', () => {
   alert('¡Botón clickeado!');
 });
 

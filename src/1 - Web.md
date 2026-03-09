@@ -57,6 +57,7 @@ El material está organizado en tres documentos principales que se deben leer en
 #### HTML
 #### CSS
 #### Javascript
+#### DOM Document object model
 #### Frameworks / Librerias
 ##### Angular
 ##### React

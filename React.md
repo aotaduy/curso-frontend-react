@@ -143,7 +143,7 @@ export default Bienvenida;
 // HTML                        // JSX
 
 class="container"              className="container"
-for="nombre"                   htmlFor="nombre"
+for="name"                     htmlFor="name"
 onclick="handler()"            onClick={handler}
 style="color: blue;"           style={{ color: 'blue' }}
 <br>                           <br />

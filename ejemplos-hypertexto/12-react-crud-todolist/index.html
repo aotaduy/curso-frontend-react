@@ -278,9 +278,9 @@
 
                     <form onSubmit={crearTodo}>
                         <div className="form-group">
-                            <label htmlFor="titulo">Título:</label>
+                            <label htmlFor="title">Título:</label>
                             <input
-                                id="titulo"
+                                id="title"
                                 type="text"
                                 placeholder="¿Qué necesitas hacer?"
                                 value={newTitle}
@@ -289,9 +289,9 @@
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="descripcion">Descripción (opcional):</label>
+                            <label htmlFor="description">Descripción (opcional):</label>
                             <textarea
-                                id="descripcion"
+                                id="description"
                                 placeholder="Detalles adicionales..."
                                 value={newBody}
                                 onChange={(e) => setNewBody(e.target.value)}
