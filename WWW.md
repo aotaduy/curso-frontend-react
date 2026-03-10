@@ -1,4 +1,4 @@
-# ¿Qué es la WWW?
+﻿# ¿Qué es la WWW?
 
 ## Historia
 
@@ -29,7 +29,7 @@ TCP/IP (Transmission Control Protocol/Internet Protocol) es el conjunto fundamen
 - **Puertos**: TCP usa puertos (0-65535) para identificar servicios; HTTP usa puerto 80, HTTPS puerto 443
 
 ##### Ejemplo
-```powershell
+c```powershell
 # Windows: Ver conexiones TCP activas
 netstat -an | findstr ESTABLISHED
 
@@ -125,6 +125,161 @@ nslookup google.com
 
 # o con host
 host google.com
+```
+
+#### Sockets
+
+##### Definición
+Un socket es un extremo de comunicación entre dos procesos a través de una red. Es la interfaz de programación (API) que permite abrir conexiones, enviar y recibir bytes. En la Web, protocolos como HTTP se montan sobre sockets TCP: primero se establece la conexión de transporte y luego se intercambian mensajes de aplicación.
+
+##### Conceptos Clave
+- **Endpoint**: Combinación de IP + puerto (ej: `127.0.0.1:8080`)
+- **TCP vs UDP**: TCP usa sockets tipo stream (confiables y ordenados); UDP usa datagramas (sin garantía de entrega)
+- **Flujo cliente-servidor**: servidor hace `bind` + `listen` + `accept`; cliente hace `connect`
+- **Operaciones básicas**: `send`/`recv` (o `write`/`read`) para intercambio de datos
+- **Cierre de conexión**: liberar recursos con `close()` al finalizar
+
+##### Diagrama: Conexión TCP con Sockets
+```mermaid
+sequenceDiagram
+  participant Client as Cliente
+  participant Server as Servidor
+
+  Note over Server: bind() + listen()
+  Client->>Server: SYN (connect)
+  Server->>Client: SYN-ACK
+  Client->>Server: ACK
+  Note over Client,Server: Conexión establecida
+
+  Client->>Server: send("Hola")
+  Server->>Client: recv() / send("Echo: Hola")
+  Client->>Server: recv()
+
+  Client->>Server: FIN
+  Server->>Client: ACK
+  Server->>Client: FIN
+  Client->>Server: ACK
+  Note over Client,Server: Conexión cerrada
+```
+
+##### Ejemplo: Cliente TCP en Python
+```python
+import socket
+
+host = "example.com"
+port = 80
+
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+    sock.connect((host, port))
+    request = "GET / HTTP/1.1\r\nHost: example.com\r\nConnection: close\r\n\r\n"
+    sock.sendall(request.encode("utf-8"))
+
+    response = b""
+    while True:
+        chunk = sock.recv(4096)
+        if not chunk:
+            break
+        response += chunk
+
+print(response.decode("utf-8", errors="replace"))
+```
+
+##### Ejemplo: Cliente TCP en Node.js
+```javascript
+const net = require('net');
+
+const client = net.createConnection({ host: 'example.com', port: 80 }, () => {
+  const request =
+    'GET / HTTP/1.1\r\n' +
+    'Host: example.com\r\n' +
+    'Connection: close\r\n\r\n';
+  client.write(request);
+});
+
+client.on('data', (data) => {
+  process.stdout.write(data.toString());
+});
+
+client.on('end', () => {
+  console.log('\nConexión cerrada por el servidor.');
+});
+
+client.on('error', (err) => {
+  console.error('Socket error:', err.message);
+});
+```
+
+##### Ejemplo: Servidor TCP en Python
+```python
+import socket
+
+# Crear socket servidor
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+# Asociar socket a un puerto
+server.bind(('127.0.0.1', 5000))
+
+# Comenzar a escuchar conexiones entrantes
+server.listen(1)
+print("Servidor escuchando en puerto 5000...")
+
+try:
+    while True:
+        # Aceptar una conexión entrante
+        client_socket, client_address = server.accept()
+        print(f"Conexión aceptada de {client_address}")
+        
+        try:
+            # Recibir datos del cliente
+            data = client_socket.recv(1024)
+            if data:
+                message = data.decode("utf-8")
+                print(f"Recibido: {message}")
+                
+                # Enviar respuesta (echo)
+                response = f"Echo: {message}"
+                client_socket.sendall(response.encode("utf-8"))
+        finally:
+            client_socket.close()
+except KeyboardInterrupt:
+    print("\nServidor detenido.")
+finally:
+    server.close()
+```
+
+##### Ejemplo: Servidor TCP en Node.js
+```javascript
+const net = require('net');
+
+// Crear servidor TCP
+const server = net.createServer((socket) => {
+  console.log(`Conexión aceptada de ${socket.remoteAddress}:${socket.remotePort}`);
+
+  // Evento: datos recibidos del cliente
+  socket.on('data', (data) => {
+    const message = data.toString();
+    console.log(`Recibido: ${message}`);
+    
+    // Enviar respuesta (echo) al cliente
+    const response = `Echo: ${message}`;
+    socket.write(response);
+  });
+
+  // Evento: cliente desconectado
+  socket.on('end', () => {
+    console.log('Cliente desconectado.');
+  });
+
+  // Evento: error en la conexión
+  socket.on('error', (err) => {
+    console.error('Socket error:', err.message);
+  });
+});
+
+// Iniciar servidor en puerto 5000
+server.listen(5000, '127.0.0.1', () => {
+  console.log('Servidor escuchando en puerto 5000...');
+});
 ```
 
 #### HTTP
