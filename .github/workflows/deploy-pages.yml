@@ -52,7 +52,10 @@ jobs:
           const title = path.basename(inputFile, '.md');
           
           const markdown = fs.readFileSync(inputFile, 'utf8');
-          const htmlContent = md.render(markdown);
+          let htmlContent = md.render(markdown);
+          
+          // Rewrite .md links to .html links (but not inside code blocks)
+          htmlContent = htmlContent.replace(/(<a\s[^>]*href=")([^"]*?)\.md((?:#[^"]*)?")>/g, '$1$2.html$3>');
           
           const fullHtml = `<!DOCTYPE html>
           <html lang="es">
