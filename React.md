@@ -1,6 +1,5 @@
-# React
 
-Ver glosario: [glosario.md](glosario.md)
+# React
 
 ## Introducción
 

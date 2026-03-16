@@ -1,6 +1,5 @@
-﻿# Hipertexto
-
-Ver glosario: [glosario.md](glosario.md)
+﻿
+# Hipertexto
 
 ## Definición
 

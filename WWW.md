@@ -1,6 +1,5 @@
-﻿# ¿Qué es la WWW?
-
-Ver glosario: [glosario.md](glosario.md)
+﻿
+# ¿Qué es la WWW?
 
 ## Historia
 
