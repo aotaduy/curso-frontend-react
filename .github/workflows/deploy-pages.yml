@@ -149,44 +149,6 @@ jobs:
             dir=$(dirname "$readme")
             node convert-md.js "$readme" "$dir/README.html"
           done
-          
-          # Create index.html with links to all pages
-          cat > _site/index.html << 'EOF'
-          <!DOCTYPE html>
-          <html lang="es">
-          <head>
-              <meta charset="UTF-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>Curso Frontend React</title>
-              <style>
-                  body { font-family: Arial, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; }
-                  h1 { color: #333; }
-                  ul { list-style-type: none; padding: 0; }
-                  li { margin: 10px 0; }
-                  a { color: #0066cc; text-decoration: none; font-size: 18px; }
-                  a:hover { text-decoration: underline; }
-                  .section { margin: 30px 0; }
-              </style>
-          </head>
-          <body>
-              <h1>Curso Frontend React</h1>
-              <div class="section">
-                  <h2>Apuntes</h2>
-                  <ul>
-                      <li><a href="WWW.html">WWW</a></li>
-                      <li><a href="Hypertexto.html">Hypertexto</a></li>
-                      <li><a href="React.html">React</a></li>
-                  </ul>
-              </div>
-              <div class="section">
-                  <h2>Ejemplos</h2>
-                  <ul>
-                      <li><a href="ejemplos-hypertexto/">Ejemplos Hypertexto</a></li>
-                  </ul>
-              </div>
-          </body>
-          </html>
-          EOF
         shell: bash
       
       - name: Setup Pages

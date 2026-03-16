@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Bad Parts - Truthy y Falsy</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background: #f3f3f3; }
+        code { background: #f5f5f5; padding: 2px 4px; }
+        .ok { color: #0a7a2f; }
+        .warn { color: #a85a00; }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Bad Parts: Truthy y Falsy</h1>
+    <p>Abre la consola (F12) para ver la evaluacion booleana de distintos valores.</p>
+
+    <h2>Tabla de valores</h2>
+    <table>
+        <thead>
+            <tr><th>Valor</th><th>Boolean(valor)</th><th>Tipo</th></tr>
+        </thead>
+        <tbody id="rows"></tbody>
+    </table>
+
+    <h2>Nota importante</h2>
+    <p class="warn">Usa <code>===</code> en lugar de <code>==</code> para evitar coerciones inesperadas.</p>
+
+    <script>
+        const testValues = [
+            { label: "false", value: false },
+            { label: "0", value: 0 },
+            { label: "-0", value: -0 },
+            { label: "0n", value: 0n },
+            { label: "\"\"", value: "" },
+            { label: "null", value: null },
+            { label: "undefined", value: undefined },
+            { label: "NaN", value: NaN },
+            { label: "\"0\"", value: "0" },
+            { label: "[]", value: [] },
+            { label: "{}", value: {} },
+            { label: "\"hola\"", value: "hola" },
+            { label: "42", value: 42 }
+        ];
+
+        const tbody = document.getElementById("rows");
+        testValues.forEach(item => {
+            const tr = document.createElement("tr");
+            const boolValue = Boolean(item.value);
+            const type = typeof item.value;
+            tr.innerHTML = `<td><code>${item.label}</code></td><td class="${boolValue ? "ok" : "warn"}">${boolValue}</td><td>${type}</td>`;
+            tbody.appendChild(tr);
+            console.log(item.label, "=>", boolValue, "(type:", type + ")");
+        });
+    </script>
+</body>
+</html>

@@ -93,7 +93,7 @@ useEffect(() => {
 Para abrir en navegador:
 ```bash
 # Opción 1: Python
-cd 11-react-basico-get
+cd 18-react-basico-get
 python -m http.server 3000
 # Abre http://localhost:3000
 

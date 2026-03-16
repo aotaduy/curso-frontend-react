@@ -1,8 +1,10 @@
-# Hipertexto
+﻿# Hipertexto
+
+Ver glosario: [glosario.md](glosario.md)
 
 ## Definición
 
-El hipertexto es un sistema de organización de información donde los documentos están interconectados mediante enlaces (links o hipervínculos) que permiten navegación no lineal. A diferencia de texto tradicional (lineal, secuencial), el hipertexto permite al lector elegir su propio camino entre documentos relacionados. En la Web, HTML (HyperText Markup Language) es el lenguaje estándar para crear este tipo de sistema.
+El hipertexto es un sistema de organización de información donde los documentos están interconectados mediante enlaces (links o hipervínculos) que permiten navegación no lineal. A diferencia de texto tradicional (lineal, secuencial), el hipertexto permite al lector elegir su propio camino entre documentos relacionados. En la World Wide Web (WWW), HTML (HyperText Markup Language) es el lenguaje estándar para crear este tipo de sistema.
 
 ## Conceptos Clave
 
@@ -198,6 +200,7 @@ CSS (Cascading Style Sheets) es el lenguaje de hojas de estilo que define la pre
 - **Especificidad**: Prioridad de selectores: inline styles > IDs > clases > tags
 - **Box Model**: Todo elemento es una caja con content, padding, border, margin
 - **Layout**: Flexbox (1-dimensional) y Grid (2-dimensional) para posicionar elementos
+- **Variables CSS (Custom Properties)**: Valores reutilizables definidos con `--nombre` y consumidos con `var(--nombre)`
 
 **💡 Ver ejemplos:** [CSS Inline](ejemplos-hypertexto/03-css-inline/) | [CSS Archivo Externo](ejemplos-hypertexto/04-css-archivo-externo/)
 
@@ -342,6 +345,42 @@ a:visited {
 }
 ```
 
+**💡 Ver ejemplo:** [CSS Variables](ejemplos-hypertexto/06b-css-variables/)
+
+### Ejemplo: Variables CSS (Custom Properties)
+
+Las variables CSS ayudan a centralizar colores, espacios y otros valores repetidos para facilitar mantenimiento y theming.
+
+```css
+/* Variables globales */
+:root {
+    --color-primary: #0ea5e9;
+    --color-text: #1d2939;
+    --space-md: 16px;
+    --radius: 10px;
+}
+
+body {
+    color: var(--color-text);
+}
+
+.button {
+    background-color: var(--color-primary);
+    padding: var(--space-md);
+    border-radius: var(--radius);
+}
+
+/* Override local: cambia solo este bloque */
+.card-success {
+    --color-primary: #16a34a;
+}
+```
+
+Buenas practicas:
+- Definir tokens base en `:root`.
+- Usar nombres semanticos (`--color-primary`, `--space-md`) en lugar de nombres de valor (`--blue-500`).
+- Sobrescribir variables por componente para variantes sin duplicar reglas.
+
 ### Diagrama: Cascada y Especificidad CSS
 
 ```mermaid
@@ -396,7 +435,7 @@ p { color: black; }
 
 ### Definición
 
-JavaScript (JS) es un lenguaje de programación dinámico, interpretado, orientado a objetos (basado en prototipos) y con tipado débil. Originalmente creado para agregar interactividad a páginas web (validación de formularios, animaciones), hoy es un lenguaje de propósito general usado tanto en navegadores (frontend) como en servidores (Node.js backend). Es el único lenguaje que los navegadores ejecutan nativamente.
+JavaScript (JS) es un lenguaje de programación dinámico, interpretado, orientado a objetos (basado en prototipos) y con tipado débil. Tiene la sintaxis parecida a C pero la semantica de Scheme (funcional). Originalmente creado para agregar interactividad a páginas web (validación de formularios, animaciones), hoy es un lenguaje de propósito general usado tanto en navegadores (frontend) como en servidores (Node.js backend). Es el *único* lenguaje que los navegadores ejecutan nativamente. Influenciado por Java, Perl, Self y Scheme.
 
 ### Conceptos Clave
 
@@ -407,7 +446,69 @@ JavaScript (JS) es un lenguaje de programación dinámico, interpretado, orienta
 - **DOM manipulation**: Puede modificar HTML/CSS dinámicamente mediante APIs del navegador
 - **ECMAScript**: Estándar del lenguaje; versiones modernas (ES6/ES2015+) agregaron clases, arrow functions, destructuring, modules
 
-**💡 Ver ejemplo:** [JavaScript Variables y Funciones](ejemplos-hypertexto/07-javascript-variables-funciones/)
+#### Good Parts (Loose Typing, Objetos Dinamicos, Funciones de Orden Superior, Funciones Lambda, Funciones Closures, Objetos Literales, Herencia Prototipica, Es facil)
+
+JavaScript tiene varias fortalezas practicas para desarrollo diario:
+
+- **Loose typing**: permite modelar rapido sin declarar tipos manualmente.
+- **Objetos dinamicos**: se pueden extender en runtime con nuevas propiedades/metodos.
+- **Funciones de orden superior**: funciones que reciben/retornan funciones (`map`, `filter`, `reduce`).
+- **Funciones lambda**: sintaxis compacta para callbacks y transformaciones.
+- **Closures**: estado privado sin clases, ideal para factories y encapsulamiento.
+- **Objetos literales**: crear estructuras de datos de forma directa y legible.
+- **Herencia prototipica**: composicion y reutilizacion basada en prototipos.
+- **Es facil**: feedback rapido en navegador y curva de entrada baja.
+
+**💡 Ver ejemplo:** [JavaScript Good Parts](ejemplos-hypertexto/07-javascript-good-parts/)
+
+#### Bad Parts (tabla de falsy y truthy)
+
+Una fuente comun de bugs viene de coerciones implicitas y evaluaciones booleanas no intuitivas.
+
+| Valor | Resultado booleano |
+|---|---|
+| `false`, `0`, `-0`, `0n`, `""`, `null`, `undefined`, `NaN` | `false` (falsy) |
+| `"0"`, `"false"`, `[]`, `{}`, numeros no cero | `true` (truthy) |
+
+Regla practica: usar `===` y `!==` en lugar de `==` y `!=`.
+
+**💡 Ver ejemplo:** [JavaScript Bad Parts](ejemplos-hypertexto/08-javascript-bad-parts-truthy-falsy/)
+
+#### Funciones anonimas lambda
+
+Se usan mucho como callbacks y para escribir transformaciones cortas con menos ruido sintactico.
+
+**💡 Ver ejemplo:** [Funciones Anonimas y Lambda](ejemplos-hypertexto/09-javascript-funciones-anonimas-lambda/)
+
+#### Closures
+
+Un closure conserva acceso al scope donde fue creado incluso despues de que la funcion externa haya terminado.
+
+**💡 Ver ejemplo:** [JavaScript Closures](ejemplos-hypertexto/10-javascript-closures/)
+
+#### Promesas
+
+Representan operaciones asincronas con estados `pending`, `fulfilled` o `rejected`.
+
+**💡 Ver ejemplo:** [JavaScript Promesas](ejemplos-hypertexto/11-javascript-promesas/)
+
+#### async await
+
+Sintaxis moderna sobre promesas para escribir asincronia con estilo secuencial y manejo claro de errores.
+
+**💡 Ver ejemplo:** [JavaScript Async Await](ejemplos-hypertexto/12-javascript-async-await/)
+
+#### JSON formato de intercambio de datos
+
+JSON es texto interoperable para serializar y transportar datos entre cliente y servidor.
+
+**💡 Ver ejemplo:** [JavaScript JSON](ejemplos-hypertexto/13-javascript-json/)
+
+#### Set y Map
+
+`Set` evita duplicados y `Map` permite claves de cualquier tipo con API clara para diccionarios.
+
+**💡 Ver ejemplo:** [JavaScript Set y Map](ejemplos-hypertexto/14-javascript-set-map/)
 
 ### Ejemplo: Variables y tipos
 
@@ -515,7 +616,7 @@ dobles = list(map(lambda x: x * 2, numeros))      # [2, 4, 6, 8, 10]
 pares = list(filter(lambda x: x % 2 == 0, numeros)) # [2, 4]
 ```
 
-**💡 Ver ejemplos:** [JavaScript DOM](ejemplos-hypertexto/08-javascript-dom/) | [JavaScript Eventos](ejemplos-hypertexto/09-javascript-eventos/)
+**💡 Ver ejemplos:** [JavaScript DOM](ejemplos-hypertexto/15-javascript-dom/) | [JavaScript Eventos](ejemplos-hypertexto/16-javascript-eventos/)
 
 ### Ejemplo: Manipulación del DOM
 
@@ -569,7 +670,7 @@ form.addEventListener('submit', (event) => {
 });
 ```
 
-**💡 Ver ejemplo:** [JavaScript Fetch API](ejemplos-hypertexto/10-javascript-fetch-api/)
+**💡 Ver ejemplo:** [JavaScript Fetch API](ejemplos-hypertexto/17-javascript-fetch-api/)
 
 ### Ejemplo: Asincronía con Promises
 
@@ -701,7 +802,7 @@ El DOM (Document Object Model) es una representación en árbol de objetos de la
 - **Propiedades y métodos**: Acceso a atributos (`element.id`), contenido (`textContent`, `innerHTML`), estilos (`style`), etc.
 - **Event listeners**: Asociar funciones a eventos de elementos para reaccionar a acciones del usuario
 
-**💡 Ver ejemplo:** [JavaScript DOM](ejemplos-hypertexto/08-javascript-dom/)
+**💡 Ver ejemplo:** [JavaScript DOM](ejemplos-hypertexto/15-javascript-dom/)
 
 ### Ejemplo: Estructura y acceso básico
 

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Promesas</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; }
+        pre { background: #f4f4f4; padding: 12px; border-radius: 6px; min-height: 140px; }
+    </style>
+</head>
+<body>
+    <h1>JavaScript: Promesas</h1>
+    <p>Las promesas modelan operaciones asincronas, pueden estar pendientse, cumplidas o rechazadas.</p>
+
+    <button id="ok">Simular exito</button>
+    <button id="fail">Simular error</button>
+    <button id="chain">Encadenar promesas</button>
+    <pre id="log"></pre>
+
+    <script>
+        const logBox = document.getElementById("log");
+        const log = (msg) => {
+            logBox.textContent += msg + "\n";
+            console.log(msg);
+        };
+
+        function fakeRequest(success) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (success) {
+                        resolve({ status: 200, data: ["A", "B", "C"] });
+                    } else {
+                        reject(new Error("Network error simulado"));
+                    }
+                }, 800);
+            });
+        }
+
+        document.getElementById("ok").addEventListener("click", () => {
+            logBox.textContent = "";
+            log("Estado: pending...");
+            fakeRequest(true)
+                .then((res) => log("fulfilled: " + JSON.stringify(res)))
+                .catch((err) => log("rejected: " + err.message));
+        });
+
+        document.getElementById("fail").addEventListener("click", () => {
+            logBox.textContent = "";
+            log("Estado: pending...");
+            fakeRequest(false)
+                .then((res) => log("fulfilled: " + JSON.stringify(res)))
+                .catch((err) => log("rejected: " + err.message));
+        });
+
+        document.getElementById("chain").addEventListener("click", () => {
+            logBox.textContent = "";
+            log("Inicio cadena...");
+
+            fakeRequest(true)
+                .then((res) => {
+                    log("Paso 1 (fulfilled): " + JSON.stringify(res));
+                    const lower = res.data.map((item) => item.toLowerCase());
+                    return lower;
+                })
+                .then((items) => {
+                    log("Paso 2 (transformacion): " + items.join(", "));
+                    return new Promise((resolve) => {
+                        setTimeout(() => resolve(items.length), 400);
+                    });
+                })
+                .then((count) => {
+                    log("Paso 3 (promesa encadenada): cantidad = " + count);
+                    if (count < 4) {
+                        throw new Error("Error generado en la cadena para mostrar catch comun");
+                    }
+                    return count;
+                })
+                .then((count) => {
+                    log("Paso 4: no se ejecuta si hubo error. count=" + count);
+                })
+                .catch((err) => {
+                    log("Catch final de la cadena: " + err.message);
+                })
+                .finally(() => {
+                    log("Cadena finalizada.");
+                });
+        });
+    </script>
+</body>
+</html>

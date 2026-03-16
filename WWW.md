@@ -1,9 +1,11 @@
 ﻿# ¿Qué es la WWW?
 
+Ver glosario: [glosario.md](glosario.md)
+
 ## Historia
 
 ### Definición
-La World Wide Web (WWW o Web) es un sistema de información distribuido basado en hipertexto, creado por Tim Berners-Lee en 1989 en el CERN. Permite acceder a documentos interconectados mediante enlaces, distribuidos en servidores alrededor del mundo y accesibles a través de Internet. A diferencia de Internet (la infraestructura de red), la Web es una aplicación que funciona sobre ella.
+La World Wide Web (WWW) es un sistema de información distribuido basado en hipertexto, creado por Tim Berners-Lee en 1989 en el CERN. Permite acceder a documentos interconectados mediante enlaces, distribuidos en servidores alrededor del mundo y accesibles a través de Internet. A diferencia de Internet (la infraestructura de red), la Web es una aplicación que funciona sobre ella.
 
 ### Conceptos Clave
 - **Internet vs Web**: Internet es la red física de computadoras; la Web es el sistema de documentos hipertextuales que funciona sobre Internet
@@ -1110,7 +1112,7 @@ parrafo.textContent = 'Nuevo párrafo creado dinámicamente';
 document.body.appendChild(parrafo);
 ```
 
-**💡 Ver ejemplo:** [JavaScript Fetch API](ejemplos-hypertexto/10-javascript-fetch-api/)
+**💡 Ver ejemplo:** [JavaScript Fetch API](ejemplos-hypertexto/17-javascript-fetch-api/)
 
 ##### Ejemplo: Fetch API (peticiones HTTP)
 ```javascript

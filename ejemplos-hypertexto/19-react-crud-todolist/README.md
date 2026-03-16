@@ -137,7 +137,7 @@ setTodos([...todos, nuevoTodo]);  // Actualiza localmente
 ## Cómo Crear
 ```bash
 # Opción 1: Python
-cd 12-react-crud-todolist
+cd 19-react-crud-todolist
 python -m http.server 8000
 # Abre http://localhost:8000
 

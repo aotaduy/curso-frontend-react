@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript JSON</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; }
+        pre { background: #f4f4f4; padding: 12px; border-radius: 6px; white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+    <h1>JavaScript: JSON como formato de intercambio</h1>
+    <p>JSON permite serializar objetos para enviar/recibir datos entre sistemas.</p>
+
+    <button id="parse">JSON.parse</button>
+    <button id="stringify">JSON.stringify</button>
+    <button id="limitations">Limitaciones JSON</button>
+    <pre id="log"></pre>
+
+    <script>
+        const logBox = document.getElementById("log");
+        const log = (msg) => {
+            logBox.textContent += msg + "\n\n";
+            console.log(msg);
+        };
+
+        document.getElementById("parse").addEventListener("click", () => {
+            logBox.textContent = "";
+            const raw = '{"name":"Lucia","age":21,"active":true}';
+            const obj = JSON.parse(raw);
+            log("JSON de entrada:\n" + raw);
+            log("Objeto resultante:\n" + JSON.stringify(obj, null, 2));
+        });
+
+        document.getElementById("stringify").addEventListener("click", () => {
+            logBox.textContent = "";
+            const data = {
+                course: "Web Frontend",
+                topics: ["HTML", "CSS", "JS"],
+                year: 2026
+            };
+            const raw = JSON.stringify(data, null, 2);
+            log("Objeto de entrada:\n" + JSON.stringify(data, null, 2));
+            log("JSON serializado:\n" + raw);
+        });
+
+        document.getElementById("limitations").addEventListener("click", () => {
+            logBox.textContent = "";
+
+            const withSpecialTypes = {
+                title: "Demo limitaciones",
+                createdAt: new Date("2026-03-16T10:00:00Z"),
+                notDefined: undefined,
+                calculate: function () { return 2 + 2; },
+                notANumber: NaN,
+                infinite: Infinity,
+                map: new Map([["a", 1]]),
+                set: new Set([1, 2, 3])
+            };
+
+            const asJson = JSON.stringify(withSpecialTypes, null, 2);
+            log("Caso 1: objeto con tipos especiales");
+            log("Entrada (objeto JS):\n" + String(withSpecialTypes));
+            log("JSON.stringify salida:\n" + asJson);
+            log("Observaciones: Date se vuelve string, undefined y funciones se omiten, NaN/Infinity se convierten en null, Map/Set pierden estructura ({})");
+
+            const arr = [1, undefined, function () {}, Symbol("x")];
+            log("Caso 2: array con undefined/funcion/symbol");
+            log("JSON.stringify([1, undefined, function(){}, Symbol('x')]) => " + JSON.stringify(arr));
+            log("Observacion: en arrays esos valores pasan a null");
+
+            try {
+                JSON.stringify({ id: 1n });
+            } catch (err) {
+                log("Caso 3: BigInt produce error");
+                log("Error: " + err.message);
+            }
+
+            const circular = { name: "root" };
+            circular.self = circular;
+            try {
+                JSON.stringify(circular);
+            } catch (err) {
+                log("Caso 4: referencia circular produce error");
+                log("Error: " + err.message);
+            }
+        });
+    </script>
+</body>
+</html>

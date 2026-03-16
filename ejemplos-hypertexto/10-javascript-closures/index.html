@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Closures</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; }
+        .row { margin: 10px 0; }
+        button { margin-right: 8px; }
+        #log { background: #f4f4f4; padding: 12px; border-radius: 6px; min-height: 140px; }
+    </style>
+</head>
+<body>
+    <h1>JavaScript: Closures</h1>
+    <p>Cada closure mantiene su propio estado privado.</p>
+
+    <div class="row">
+        <button id="incA">Incrementar contador A</button>
+        <button id="incB">Incrementar contador B</button>
+    </div>
+    <pre id="log"></pre>
+
+    <script>
+        const logBox = document.getElementById("log");
+        const append = (msg) => {
+            logBox.textContent += msg + "\n";
+            console.log(msg);
+        };
+
+        function createCounter(label) {
+            let count = 0;
+            return function () {
+                count += 1;
+                append(label + ": " + count);
+            };
+        }
+
+        const counterA = createCounter("A");
+        const counterB = createCounter("B");
+
+        document.getElementById("incA").addEventListener("click", counterA);
+        document.getElementById("incB").addEventListener("click", counterB);
+    </script>
+</body>
+</html>

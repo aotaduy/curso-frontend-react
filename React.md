@@ -1,5 +1,7 @@
 # React
 
+Ver glosario: [glosario.md](glosario.md)
+
 ## Introducción
 
 ### ¿Qué es React?
@@ -742,7 +744,7 @@ function Ejemplo() {
 }
 ```
 
-**💡 Ver ejemplo:** [React Básico GET](ejemplos-hypertexto/11-react-basico-get/)
+**💡 Ver ejemplo:** [React Básico GET](ejemplos-hypertexto/18-react-basico-get/)
 
 #### Ejemplo: Fetch de datos (API)
 
@@ -1483,7 +1485,7 @@ function InputFahrenheit({ value, onChange }) {
 
 ## Estado Asíncrono: Llamadas a API
 
-**💡 Ver ejemplos:** [React Básico GET](ejemplos-hypertexto/11-react-basico-get/) | [React CRUD TodoList](ejemplos-hypertexto/12-react-crud-todolist/)
+**💡 Ver ejemplos:** [React Básico GET](ejemplos-hypertexto/18-react-basico-get/) | [React CRUD TodoList](ejemplos-hypertexto/19-react-crud-todolist/)
 
 ### Definición
 

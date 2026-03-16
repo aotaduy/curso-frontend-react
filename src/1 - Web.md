@@ -1,5 +1,7 @@
 # Desarrollo Web - Apunte del Curso
 
+Ver glosario: [glosario.md](../glosario.md)
+
 ## Introducción
 
 Este apunte cubre los fundamentos de tecnologías web necesarios para desarrollar aplicaciones frontend y backend modernas. Está diseñado para estudiantes de Ingeniería en Sistemas de la UTN con conocimientos básicos de programación (Python, Smalltalk, C) pero sin experiencia previa en JavaScript.
@@ -38,6 +40,7 @@ El material está organizado en tres documentos principales que se deben leer en
 #### TCP/IP
 #### URL / URI
 #### DNS
+#### Sockets
 #### HTTP
 ##### Request
 ##### Verbs

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Async Await</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; }
+        pre { background: #f4f4f4; padding: 12px; border-radius: 6px; min-height: 140px; }
+    </style>
+</head>
+<body>
+    <h1>JavaScript: Async/Await</h1>
+    <p>Async/await es una sintaxis mas legible para trabajar con promesas.</p>
+
+    <button id="run">Ejecutar flujo async</button>
+    <pre id="log"></pre>
+
+    <script>
+        const logBox = document.getElementById("log");
+        const log = (msg) => {
+            logBox.textContent += msg + "\n";
+            console.log(msg);
+        };
+
+        function delay(ms, value) {
+            return new Promise((resolve) => setTimeout(() => resolve(value), ms));
+        }
+
+        async function runFlow() {
+            try {
+                logBox.textContent = "";
+                log("Inicio...");
+                const user = await delay(500, { id: 1, name: "Ana" });
+                log("Usuario: " + JSON.stringify(user));
+
+                const posts = await delay(600, ["post-1", "post-2"]);
+                log("Posts: " + posts.join(", "));
+
+                log("Fin correcto");
+            } catch (err) {
+                log("Error: " + err.message);
+            }
+        }
+
+        document.getElementById("run").addEventListener("click", runFlow);
+    </script>
+</body>
+</html>

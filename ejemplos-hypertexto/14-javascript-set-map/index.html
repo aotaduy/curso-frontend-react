@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Set y Map</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; }
+        pre { background: #f4f4f4; padding: 12px; border-radius: 6px; min-height: 140px; }
+    </style>
+</head>
+<body>
+    <h1>JavaScript: Set y Map</h1>
+    <p><code>Set</code> evita duplicados. <code>Map</code> guarda pares clave-valor con cualquier tipo de clave.</p>
+
+    <button id="run">Ejecutar demo</button>
+    <pre id="log"></pre>
+
+    <script>
+        const box = document.getElementById("log");
+        const write = (msg) => {
+            box.textContent += msg + "\n";
+            console.log(msg);
+        };
+
+        document.getElementById("run").addEventListener("click", () => {
+            box.textContent = "";
+
+            const emails = ["a@utn.edu", "b@utn.edu", "a@utn.edu", "c@utn.edu"];
+            const uniqueEmails = [...new Set(emails)];
+            write("Set unicos: " + uniqueEmails.join(", "));
+
+            const scores = new Map();
+            scores.set("Ana", 9);
+            scores.set("Luis", 7);
+            scores.set("Ana", 10);
+
+            write("Map size: " + scores.size);
+            write("Score Ana: " + scores.get("Ana"));
+
+            for (const [name, score] of scores.entries()) {
+                write(name + " => " + score);
+            }
+        });
+    </script>
+</body>
+</html>

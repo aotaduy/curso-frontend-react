@@ -1,6 +1,6 @@
-# JavaScript Variables y Funciones
+# JavaScript Good Parts
 
-**Concepto:** Fundamentos del lenguaje JavaScript
+**Concepto:** fortalezas del lenguaje JavaScript aplicadas en codigo real.
 
 ## Archivo
 - `index.html` - Ejemplos con código en `<script>` al final y en consola
@@ -11,12 +11,14 @@
 - Tipado dinámico (cambiar tipo en tiempo de ejecución)
 - Funciones declarativas
 - Arrow functions `() => {}`
+- Funciones de orden superior (`map`, `filter`, `reduce`)
 - Operadores matemáticos: `+`, `-`, `*`, `/`, `%`, `**`
 - Comparadores: `===`, `==`, `>`, `<`, `>=`, `<=`
 - Lógica booleana: `&&`, `||`, `!`
 - Condicionales: `if/else`, `switch`
 - Arrays y métodos: `push`, `pop`, `map`, `filter`, `reduce`
-- Objetos y propiedades
+- Objetos literales y propiedades dinámicas
+- Herencia prototípica básica
 - Closures (funciones anidadas)
 - Destructuring (desempaquetado)
 - Template literals (strings mejorados)
@@ -41,6 +43,15 @@ El archivo tiene ejemplos que se ejecutan automáticamente y muestran results en
 - Comprensión de variables, funciones y tipos
 
 ## Notas
-- Este es el nivel más básico de JavaScript
-- Los conceptos 08-10 usan funciones más avanzadas
-- React (11, 12) usa muchos de estos conceptos
+- Este ejemplo cubre los Good Parts solicitados del lenguaje
+- Los conceptos 08-17 extienden JavaScript hacia asincronia y DOM
+- React (18, 19) reutiliza varios de estos patrones
+
+## Version Node.js
+- Archivo equivalente: `node-example.js`
+- Descargar archivo JS: [node-example.js](./node-example.js)
+
+### Como correr en Node.js
+1. Abre una terminal en esta carpeta.
+2. Ejecuta `node node-example.js`.
+

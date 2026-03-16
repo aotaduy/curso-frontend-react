@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones Anonimas y Lambda</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; }
+        pre { background: #f4f4f4; padding: 12px; border-radius: 6px; }
+        button { margin-right: 8px; }
+    </style>
+</head>
+<body>
+    <h1>JavaScript: Funciones Anonimas y Lambda</h1>
+    <p>Compara funciones tradicionales, anonimas y arrow functions.</p>
+
+    <button id="run">Ejecutar ejemplos</button>
+    <pre id="output"></pre>
+
+    <script>
+        const out = document.getElementById("output");
+        const log = (msg) => {
+            out.textContent += msg + "\n";
+            console.log(msg);
+        };
+
+        document.getElementById("run").addEventListener("click", function () {
+            out.textContent = "";
+
+            const nums = [1, 2, 3, 4, 5];
+
+            // Funcion anonima en map
+            const doublesA = nums.map(function (n) { return n * 2; });
+            // Funcion lambda (arrow)
+            const doublesB = nums.map((n) => n * 2);
+
+            const greet = (name) => `Hola ${name}`;
+
+            log("Original: " + nums.join(", "));
+            log("Anonima map: " + doublesA.join(", "));
+            log("Lambda map: " + doublesB.join(", "));
+            log(greet("UTN"));
+        });
+    </script>
+</body>
+</html>
