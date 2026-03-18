@@ -8,9 +8,10 @@
 - [**Web.md**](src/1%20-%20Web.md) - Compendio de tecnologías web
 - [**React.md**](React.md) - Guía completa sobre React, componentes, hooks y ecosistema
 
-### Apendice
+### Apéndices
 
 - [**Git.md**](Git.md) - Apéndice de Git y GitHub: control de versiones, ramas, merge, rebase y pull requests
+- [**Vite-React.md**](Vite-React.md) - Apéndice de React + Vite: instalación, estructura, desarrollo local y versionado con GitHub
 ---
 
 ## 🔍 Glosario
