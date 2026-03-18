@@ -56,3 +56,6 @@ Ejemplos de código auto-contenidos que puedan probarse fácilmente
 
 
 podemos agregar diagramas de mermaid si es necesario o util para ese cocepto .
+
+
+Quiero crear un archivo nuevi llamado glosario.md con las palabras siglas y jerga que se usa en los archivos md. Quiero agregar links desde los Archivos MD a el glosario y que el gflosario tenga los links de vuelta a donde se usa la palabra. En el glosario agregar una definicion corta y a su vez linkear con otras palabras del glosario. Agregar un link a mdn y a la wikipedia o a l documentacion si corresponde para la palabra en cuestion. 

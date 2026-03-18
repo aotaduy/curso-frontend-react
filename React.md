@@ -758,7 +758,7 @@ function ListaUsuarios() {
         fetch('https://jsonplaceholder.typicode.com/users')
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Error en la petición');
+                    throw new Error('Error en la solicitud http');
                 }
                 return response.json();
             })
@@ -1493,7 +1493,7 @@ La mayoría de aplicaciones web necesitan comunicarse con un servidor (backend) 
 ### Fetch API
 
 #### Definición
-`fetch()` es la API moderna del navegador para hacer peticiones HTTP. Retorna una Promise que resuelve a un objeto Response. Es asíncrona (no bloquea el render), trabaja con Promises y async/await.
+`fetch()` es la API moderna del navegador para hacer solicitudes HTTP. Retorna una Promise que resuelve a un objeto Response. Es asíncrona (no bloquea el render), trabaja con Promises y async/await.
 
 ### Promises
 

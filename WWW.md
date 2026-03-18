@@ -286,11 +286,11 @@ server.listen(5000, '127.0.0.1', () => {
 #### HTTP
 
 ##### Definición
-HTTP (HyperText Transfer Protocol) es el protocolo de aplicación que define cómo se transmiten mensajes entre clientes (navegadores) y servidores web. Es un protocolo sin estado (stateless), basado en texto, que funciona mediante un modelo de petición-respuesta (request-response). HTTPS es la versión segura con cifrado TLS/SSL.
+HTTP (HyperText Transfer Protocol) es el protocolo de aplicación que define cómo se transmiten mensajes entre clientes (navegadores) y servidores web. Es un protocolo sin estado (stateless), basado en texto, que funciona mediante un modelo de solicitud http-respuesta (request-response). HTTPS es la versión segura con cifrado TLS/SSL.
 
 ##### Conceptos Clave
-- **Stateless**: Cada petición es independiente; el servidor no recuerda peticiones anteriores (se usan cookies/sesiones para mantener estado)
-- **Cliente-Servidor**: El cliente (navegador) inicia peticiones; el servidor responde con recursos (HTML, JSON, imágenes, etc.)
+- **Stateless**: Cada solicitud http es independiente; el servidor no recuerda solicitudes anteriores (se usan cookies/sesiones para mantener estado)
+- **Cliente-Servidor**: El cliente (navegador) inicia solicitudes; el servidor responde con recursos (HTML, JSON, imágenes, etc.)
 - **Versiones**: HTTP/1.1 (conexiones persistentes), HTTP/2 (multiplexing), HTTP/3 (sobre QUIC/UDP)
 - **HTTPS = HTTP + TLS**: Cifra la comunicación para proteger datos sensibles (passwords, información personal)
 
@@ -301,7 +301,7 @@ sequenceDiagram
     participant Server as Servidor Web
     
     Browser->>Server: GET /index.html HTTP/1.1<br/>Host: example.com<br/>User-Agent: Mozilla/5.0
-    Note over Server: Procesa la petición<br/>Busca el archivo<br/>Genera respuesta
+    Note over Server: Procesa la solicitud http<br/>Busca el archivo<br/>Genera respuesta
     Server->>Browser: HTTP/1.1 200 OK<br/>Content-Type: text/html<br/><br/>&lt;html&gt;...&lt;/html&gt;
     Note over Browser: Renderiza la página
 ```
@@ -312,7 +312,7 @@ sequenceDiagram
 Un HTTP Request es el mensaje que el cliente envía al servidor para solicitar un recurso o acción. Contiene un método/verbo (GET, POST, etc.), la ruta del recurso (path), la versión del protocolo HTTP y headers con metadatos. Opcionalmente puede incluir un body con datos (común en POST/PUT).
 
 **Conceptos Clave**
-- **Línea de petición**: `MÉTODO /ruta HTTP/1.1` (ej: `GET /api/users HTTP/1.1`)
+- **Línea de solicitud http**: `MÉTODO /ruta HTTP/1.1` (ej: `GET /api/users HTTP/1.1`)
 - **Headers obligatorios**: `Host` indica el dominio destino (obligatorio en HTTP/1.1)
 - **Headers comunes**: `User-Agent` (navegador), `Accept` (tipos de contenido aceptados), `Authorization` (credenciales)
 - **Body**: Solo en algunos métodos (POST, PUT, PATCH); contiene datos a enviar (formularios, JSON, archivos)
@@ -390,10 +390,10 @@ def delete_user(user_id):
 ###### Headers y Body
 
 **Definición**
-Los headers HTTP son pares clave-valor que transmiten metadatos sobre la petición o respuesta (tipo de contenido, autenticación, caching, etc.). El body es la sección opcional que contiene los datos reales enviados (en requests) o recibidos (en responses), separado de los headers por una línea en blanco.
+Los headers HTTP son pares clave-valor que transmiten metadatos sobre la solicitud http o respuesta (tipo de contenido, autenticación, caching, etc.). El body es la sección opcional que contiene los datos reales enviados (en requests) o recibidos (en responses), separado de los headers por una línea en blanco.
 
 **Conceptos Clave**
-- **Headers de petición**: `User-Agent`, `Accept`, `Cookie`, `Authorization`, `Content-Type`
+- **Headers de solicitud http**: `User-Agent`, `Accept`, `Cookie`, `Authorization`, `Content-Type`
 - **Headers de respuesta**: `Content-Type`, `Content-Length`, `Set-Cookie`, `Cache-Control`, `Location`
 - **Headers generales**: `Date`, `Connection`
 - **Body encoding**: El header `Content-Type` especifica el formato del body (JSON, HTML, form data, imagen, etc.)
@@ -426,7 +426,7 @@ Cache-Control: no-cache
 ###### Response
 
 **Definición**
-Un HTTP Response es el mensaje que el servidor envía de vuelta al cliente tras procesar una petición. Contiene una línea de estado (con código numérico y mensaje), headers con metadatos y opcionalmente un body con el contenido solicitado. El código de estado indica si la petición fue exitosa o hubo algún error.
+Un HTTP Response es el mensaje que el servidor envía de vuelta al cliente tras procesar una solicitud http. Contiene una línea de estado (con código numérico y mensaje), headers con metadatos y opcionalmente un body con el contenido solicitado. El código de estado indica si la solicitud http fue exitosa o hubo algún error.
 
 **Conceptos Clave**
 - **Línea de estado**: `HTTP/1.1 200 OK` (versión del protocolo + código + frase descriptiva)
@@ -474,18 +474,18 @@ Content-Length: 88
 ###### Status Codes
 
 **Definición**
-Los códigos de estado HTTP son números de tres dígitos que el servidor envía en la respuesta para indicar el resultado de la petición. Se agrupan en cinco categorías según su primer dígito: 1xx (informativo), 2xx (éxito), 3xx (redirección), 4xx (error del cliente) y 5xx (error del servidor).
+Los códigos de estado HTTP son números de tres dígitos que el servidor envía en la respuesta para indicar el resultado de la solicitud http. Se agrupan en cinco categorías según su primer dígito: 1xx (informativo), 2xx (éxito), 3xx (redirección), 4xx (error del cliente) y 5xx (error del servidor).
 
 **Conceptos Clave**
-- **2xx Éxito**: La petición fue recibida, entendida y procesada correctamente
-- **4xx Error del cliente**: Error en la petición (recurso no existe, falta autenticación, sintaxis incorrecta)
-- **5xx Error del servidor**: El servidor falló al procesar una petición válida
+- **2xx Éxito**: La solicitud http fue recibida, entendida y procesada correctamente
+- **4xx Error del cliente**: Error en la solicitud http (recurso no existe, falta autenticación, sintaxis incorrecta)
+- **5xx Error del servidor**: El servidor falló al procesar una solicitud http válida
 - **Idempotencia**: Algunos métodos + códigos permiten reintentar la operación de forma segura
 
 **Códigos más comunes:**
 ```
 2xx - Éxito
-├─ 200 OK              → Petición exitosa (GET, POST procesado)
+├─ 200 OK              → Solicitud HTTP exitosa (GET, POST procesado)
 ├─ 201 Created         → Recurso creado exitosamente (POST, PUT)
 ├─ 204 No Content      → Éxito pero sin body (DELETE exitoso)
 
@@ -539,13 +539,13 @@ if (result == 0) {        // Similar a 200 OK
 ###### Web Servers
 
 **Definición**
-Un web server (servidor web) es un programa que escucha peticiones HTTP en un puerto (típicamente 80 para HTTP, 443 para HTTPS) y responde con recursos (archivos HTML, imágenes, datos JSON, etc.). Puede servir archivos estáticos directamente o ejecutar código dinámico (scripts) para generar respuestas. Los servidores web más populares son Apache, Nginx, IIS y Node.js.
+Un web server (servidor web) es un programa que escucha solicitudes HTTP en un puerto (típicamente 80 para HTTP, 443 para HTTPS) y responde con recursos (archivos HTML, imágenes, datos JSON, etc.). Puede servir archivos estáticos directamente o ejecutar código dinámico (scripts) para generar respuestas. Los servidores web más populares son Apache, Nginx, IIS y Node.js.
 
 **Conceptos Clave**
 - **Servidor HTTP vs Servidor de Aplicación**: HTTP server sirve archivos estáticos; app server ejecuta lógica de negocio (a menudo combinados)
-- **Multithreading/Async**: Manejan múltiples peticiones concurrentes (threads en Apache, event loop en Node.js/Nginx)
+- **Multithreading/Async**: Manejan múltiples solicitudes concurrentes (threads en Apache, event loop en Node.js/Nginx)
 - **Hosting estático vs dinámico**: Estático sirve archivos sin modificación; dinámico genera contenido (consulta BD, procesa lógica)
-- **Reverse Proxy**: Servidor intermediario que distribuye peticiones entre múltiples servidores backend (load balancing)
+- **Reverse Proxy**: Servidor intermediario que distribuye solicitudes entre múltiples servidores backend (load balancing)
 
 **Diagrama: Arquitectura Cliente-Servidor**
 ```mermaid
@@ -565,10 +565,10 @@ graph LR
 ####### Apache
 
 **Definición**
-Apache HTTP Server es uno de los servidores web más antiguos (1995) y populares del mundo. Es de código abierto, altamente configurable mediante módulos, y utiliza un modelo de procesos/threads para manejar peticiones concurrentes. Tradicionalmente usado con PHP para crear sitios dinámicos (stack LAMP: Linux, Apache, MySQL, PHP).
+Apache HTTP Server es uno de los servidores web más antiguos (1995) y populares del mundo. Es de código abierto, altamente configurable mediante módulos, y utiliza un modelo de procesos/threads para manejar solicitudes concurrentes. Tradicionalmente usado con PHP para crear sitios dinámicos (stack LAMP: Linux, Apache, MySQL, PHP).
 
 **Conceptos Clave**
-- **Modelo MPM (Multi-Processing Module)**: Prefork (un proceso por petición), Worker (múltiples threads), Event (mejor para conexiones persistentes)
+- **Modelo MPM (Multi-Processing Module)**: Prefork (un proceso por solicitud http), Worker (múltiples threads), Event (mejor para conexiones persistentes)
 - **Módulos**: Extensible mediante módulos (mod_rewrite para URLs amigables, mod_ssl para HTTPS, mod_proxy para proxy)
 - **.htaccess**: Archivos de configuración por directorio para rewrite rules, autenticación, etc.
 - **Uso típico**: Hosting compartido tradicional, sitios PHP (WordPress, Drupal), aplicaciones legacy
@@ -711,7 +711,7 @@ Node.js es un entorno de ejecución de JavaScript del lado del servidor, constru
 const http = require('http');
 
 const server = http.createServer((req, res) => {
-  // req = request (petición), res = response (respuesta)
+  // req = request (solicitud http), res = response (respuesta)
   
   if (req.url === '/') {
     res.writeHead(200, {'Content-Type': 'text/html'});
@@ -770,7 +770,7 @@ app.listen(3000, () => {
 Java es un lenguaje compilado orientado a objetos ampliamente usado para aplicaciones empresariales backend. Los servidores de aplicaciones Java (Tomcat, JBoss, WebLogic) ejecutan servlets y JSP (JavaServer Pages) para generar contenido dinámico. Spring Boot es el framework moderno más popular para crear APIs REST y microservicios en Java.
 
 **Conceptos Clave**
-- **Servlets**: Clases Java que manejan peticiones HTTP (similar a controladores en otros frameworks)
+- **Servlets**: Clases Java que manejan solicitudes HTTP (similar a controladores en otros frameworks)
 - **Application Servers**: Tomcat (servlet container), JBoss/WildFly (full Java EE), Jetty (embeddable)
 - **Spring Boot**: Framework moderno que simplifica configuración y permite crear aplicaciones standalone
 - **Casos de uso**: Aplicaciones empresariales, backends bancarios/financieros, microservicios, sistemas críticos
@@ -846,7 +846,7 @@ class User {
 ### Navegador Web
 
 #### Definición
-Un navegador web (browser) es una aplicación cliente que interpreta y renderiza documentos web (HTML, CSS, JavaScript), permitiendo a los usuarios navegar por la WWW. Actúa como intermediario entre el usuario y los servidores web: realiza peticiones HTTP, descarga recursos, ejecuta código JavaScript, renderiza contenido visual y maneja interacciones del usuario.
+Un navegador web (browser) es una aplicación cliente que interpreta y renderiza documentos web (HTML, CSS, JavaScript), permitiendo a los usuarios navegar por la WWW. Actúa como intermediario entre el usuario y los servidores web: realiza solicitudes HTTP, descarga recursos, ejecuta código JavaScript, renderiza contenido visual y maneja interacciones del usuario.
 
 #### Conceptos Clave
 - **Motores de renderizado**: Blink (Chrome/Edge), WebKit (Safari), Gecko (Firefox) - interpretan HTML/CSS y construyen el DOM
@@ -857,12 +857,12 @@ Un navegador web (browser) es una aplicación cliente que interpreta y renderiza
 #### Carga de la página (Networking)
 
 ##### Definición
-La carga de una página web es un proceso multi-paso que comienza cuando el usuario ingresa una URL y termina cuando todos los recursos están descargados y renderizados. Involucra DNS lookup, conexión TCP, handshake TLS (si es HTTPS), petición HTTP, descarga del HTML y luego descarga secuencial/paralela de recursos referenciados (CSS, JS, imágenes).
+La carga de una página web es un proceso multi-paso que comienza cuando el usuario ingresa una URL y termina cuando todos los recursos están descargados y renderizados. Involucra DNS lookup, conexión TCP, handshake TLS (si es HTTPS), solicitud, descarga del HTML y luego descarga secuencial/paralela de recursos referenciados (CSS, JS, imágenes).
 
 ##### Conceptos Clave
 - **Critical Rendering Path**: Secuencia mínima de pasos para renderizar la primera vista (HTML → CSS → JS bloqueante)
 - **Descarga de recursos**: HTML se parsea top-to-bottom; CSS/JS bloquean renderizado; imágenes se cargan en paralelo
-- **Waterfall**: Las peticiones tienen dependencias (HTML primero, luego sus recursos); DevTools muestra waterfall diagram
+- **Waterfall**: Las solicitudes tienen dependencias (HTML primero, luego sus recursos); DevTools muestra waterfall diagram
 - **Optimizaciones**: Minificación, compresión (gzip/brotli), CDN, lazy loading, code splitting
 
 ##### Diagrama: Proceso completo de carga de página
@@ -996,7 +996,7 @@ Document
 #### Event Loop
 
 ##### Definición
-El Event Loop es el mecanismo que permite a JavaScript (single-threaded) manejar operaciones asíncronas sin bloquear la ejecución. Coordina la ejecución de código sincrónico, callbacks de operaciones asíncronas (timers, eventos, peticiones de red) y actualización de la UI. Implementado por el navegador (o Node.js en el servidor).
+El Event Loop es el mecanismo que permite a JavaScript (single-threaded) manejar operaciones asíncronas sin bloquear la ejecución. Coordina la ejecución de código sincrónico, callbacks de operaciones asíncronas (timers, eventos, solicitudes de red) y actualización de la UI. Implementado por el navegador (o Node.js en el servidor).
 
 ##### Conceptos Clave
 - **Call Stack**: Pila de funciones en ejecución (LIFO - Last In First Out), similar a C
@@ -1076,11 +1076,11 @@ console.log('Esto se ejecuta primero');
 #### Browser APIs
 
 ##### Definición
-Las Browser APIs (Application Programming Interfaces) son interfaces JavaScript que el navegador proporciona para interactuar con funcionalidades del sistema: manipular el DOM, hacer peticiones de red, almacenar datos, acceder a geolocalización, notificaciones, etc. No son parte del lenguaje JavaScript en sí, sino servicios expuestos por el navegador.
+Las Browser APIs (Application Programming Interfaces) son interfaces JavaScript que el navegador proporciona para interactuar con funcionalidades del sistema: manipular el DOM, hacer solicitudes de red, almacenar datos, acceder a geolocalización, notificaciones, etc. No son parte del lenguaje JavaScript en sí, sino servicios expuestos por el navegador.
 
 ##### Conceptos Clave
 - **DOM API**: Manipular elementos HTML (`document.querySelector`, `element.addEventListener`, etc.)
-- **Fetch API**: Realizar peticiones HTTP asíncronas (reemplaza XMLHttpRequest)
+- **Fetch API**: Realizar solicitudes HTTP asíncronas (reemplaza XMLHttpRequest)
 - **Storage APIs**: localStorage (persistente), sessionStorage (sesión), IndexedDB (base de datos)
 - **Otras APIs**: Geolocation, Notifications, Canvas, WebGL, WebSockets, Service Workers, Web Audio, etc.
 
@@ -1113,13 +1113,13 @@ document.body.appendChild(parrafo);
 
 **💡 Ver ejemplo:** [JavaScript Fetch API](ejemplos-hypertexto/17-javascript-fetch-api/)
 
-##### Ejemplo: Fetch API (peticiones HTTP)
+##### Ejemplo: Fetch API (solicitudes HTTP)
 ```javascript
 // GET request
 fetch('https://api.example.com/users')
   .then(response => {
     if (!response.ok) {
-      throw new Error('Error en la petición');
+      throw new Error('Error en la solicitud http');
     }
     return response.json();  // Parsear JSON
   })
@@ -1192,10 +1192,10 @@ with open('config.txt', 'r') as f:
 La World Wide Web es un sistema distribuido de documentos hipertextuales que funciona sobre Internet mediante protocolos estándar. Los componentes clave incluyen:
 
 1. **Protocolos fundamentales**: TCP/IP para comunicación de red, DNS para resolución de nombres, HTTP para transferencia de hipertexto
-2. **Arquitectura cliente-servidor**: Navegadores (clientes) solicitan recursos a servidores web que procesan peticiones y generan respuestas
+2. **Arquitectura cliente-servidor**: Navegadores (clientes) solicitan recursos a servidores web que procesan solicitudes y generan respuestas
 3. **Servidores web**: Apache, Nginx (servidores HTTP), Node.js, PHP, Java (ejecutan lógica backend)
 4. **Navegadores**: Descargan, interpretan y renderizan HTML/CSS/JS usando motores de renderizado y JavaScript
 5. **Event Loop**: Permite JavaScript asíncrono sin bloquear la UI
-6. **Browser APIs**: Interfaces para manipular DOM, hacer peticiones HTTP, almacenar datos localmente, etc.
+6. **Browser APIs**: Interfaces para manipular DOM, hacer solicitudes HTTP, almacenar datos localmente, etc.
 
 Este ecosistema forma la base sobre la cual construiremos aplicaciones web modernas con React y JavaScript.

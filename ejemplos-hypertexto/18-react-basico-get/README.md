@@ -1,5 +1,7 @@
 # React Básico - GET
 
+Archivo unico con mini aplicacion react todo embebido en un solo archivo html, se carga react remotamente desde un cdn. Estilos y codigo embebidos en una sola pagina. 
+
 **Concepto:** Componente React que obtiene datos de una API REST
 
 ## Archivo

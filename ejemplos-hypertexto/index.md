@@ -26,7 +26,7 @@ Carpeta con ejemplos funcionales y simples de los conceptos del archivo `Hyperte
 - **14-javascript-set-map**: Estructuras de datos Set y Map
 - **15-javascript-dom**: Manipulación del Document Object Model
 - **16-javascript-eventos**: Event listeners y manejo de eventos
-- **17-javascript-fetch-api**: Peticiones HTTP asíncronas con Fetch API
+- **17-javascript-fetch-api**: solicitudes HTTP asíncronas con Fetch API
 
 ### Frameworks (React)
 - **18-react-basico-get**: Componente simple que GET datos de un API

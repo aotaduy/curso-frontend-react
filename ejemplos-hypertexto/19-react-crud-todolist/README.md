@@ -175,7 +175,7 @@ JSONPlaceholder **no guarda permanentemente**:
 - Estadísticas actualizadas
 
 ## Aprendizajes Clave
-1. **Async/Await en Fetch** - Peticiones HTTP
+1. **Async/Await en Fetch** - solicitudes HTTP
 2. **Form Handling** - Capturar valores de input
 3. **Event Handling** - onClick, onSubmit, onChange
 4. **State Management** - Actualizar UI automáticamente

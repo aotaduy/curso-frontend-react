@@ -68,4 +68,4 @@ Haz clic en los botones para ver el DOM cambiar en tiempo real.
 
 ## Próximos Conceptos
 - **Concepto 09:** Eventos (cómo responder a acciones del usuario)
-- **Concepto 10:** Fetch (peticiones HTTP)
+- **Concepto 10:** Fetch (solicitudes HTTP)

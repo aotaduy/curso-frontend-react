@@ -1,6 +1,6 @@
 # JavaScript Fetch API
 
-**Concepto:** Hacer peticiones HTTP asincrónicas sin recargar la página
+**Concepto:** Hacer solicitudes HTTP asincrónicas sin recargar la página
 
 ## Archivo
 - `index.html` - Ejemplos de Fetch API
@@ -14,13 +14,13 @@
 ## Conceptos Demostrados
 - **GET:** Obtener datos
 - **POST:** Crear datos
-- **Peticiones Promises:** `.then().catch()`
+- **solicitudes Promises:** `.then().catch()`
 - **Async/Await:** Sintaxis moderna (más legible)
 - **JSON:** Formato de datos
 - **Status codes:** 200, 404, 500, etc.
 - **Headers:** Content-Type, Authorization
 - **Error handling:** Try/catch
-- **Peticiones paralelas:** Promise.all()
+- **solicitudes paralelas:** Promise.all()
 
 ## Sintaxis Básica GET
 ```javascript
@@ -80,7 +80,7 @@ async function obtenerUsuarios() {
 ## Debugging
 1. Abre DevTools (F12)
 2. Ve a Network tab
-3. Haz una petición
+3. Haz una solicitud http
 4. Verás el request y response completos
 
 ## Casos de Uso Reales

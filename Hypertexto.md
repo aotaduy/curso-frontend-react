@@ -674,12 +674,12 @@ form.addEventListener('submit', (event) => {
 ### Ejemplo: Asincronía con Promises
 
 ```javascript
-// Simular una petición a una API (asíncrona)
+// Simular una solicitud http a una API (asíncrona)
 function obtenerUsuarios() {
     return fetch('https://api.example.com/users')
         .then(response => {
             if (!response.ok) {
-                throw new Error('Error en la petición');
+                throw new Error('Error en la solicitud http');
             }
             return response.json();
         })
@@ -698,7 +698,7 @@ async function obtenerUsuariosAsync() {
         const response = await fetch('https://api.example.com/users');
         
         if (!response.ok) {
-            throw new Error('Error en la petición');
+            throw new Error('Error en la solicitud http');
         }
         
         const usuarios = await response.json();
@@ -729,7 +729,7 @@ async def obtener_usuarios():
                 print('Usuarios:', usuarios)
                 return usuarios
             else:
-                print('Error en la petición')
+                print('Error en la solicitud http')
 
 # Ejecutar
 asyncio.run(obtener_usuarios())
@@ -1278,7 +1278,7 @@ El hipertexto y las tecnologías web frontend se componen de tres pilares fundam
 Estos tres lenguajes trabajan juntos:
 - HTML crea la estructura (DOM tree)
 - CSS estiliza los elementos (colores, layout, animaciones)
-- JavaScript agrega lógica (validaciones, peticiones HTTP, actualización dinámica)
+- JavaScript agrega lógica (validaciones, solicitudes HTTP, actualización dinámica)
 
 Los **frameworks/librerías modernas** (React, Angular) facilitan crear aplicaciones complejas:
 - Componentes reutilizables
