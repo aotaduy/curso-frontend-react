@@ -6,10 +6,11 @@
 - [**WWW.md**](WWW.md) - World Wide Web: protocolos, arquitectura y fundamentos de internet
 - [**Hypertexto.md**](Hypertexto.md) - Introducción a HTML, la estructura de documentos web y semántica
 - [**Web.md**](src/1%20-%20Web.md) - Compendio de tecnologías web
-
-### Bibliotecas y Frameworks
 - [**React.md**](React.md) - Guía completa sobre React, componentes, hooks y ecosistema
 
+### Apendice
+
+- [**Git.md**](Git.md) - Apéndice de Git y GitHub: control de versiones, ramas, merge, rebase y pull requests
 ---
 
 ## 🔍 Glosario
