@@ -59,3 +59,20 @@ podemos agregar diagramas de mermaid si es necesario o util para ese cocepto .
 
 
 Quiero crear un archivo nuevi llamado glosario.md con las palabras siglas y jerga que se usa en los archivos md. Quiero agregar links desde los Archivos MD a el glosario y que el gflosario tenga los links de vuelta a donde se usa la palabra. En el glosario agregar una definicion corta y a su vez linkear con otras palabras del glosario. Agregar un link a mdn y a la wikipedia o a l documentacion si corresponde para la palabra en cuestion. 
+
+
+
+
+
+
+Quiero crear un nuevo archivo MD con conceptos de git con el mismo formato de los otros explicar GIT, historiua, conceptos basicos: commit, rama, merge, rebase. y despues github con el concepto de pull request este archivo es mas bien un apendice que quiero agregar como un preconcepto
+
+cuando hablamos de rama usar tambien entre parentesis la palabra branch lo mismo para staging area y todos los conceptos de git ay que muchas herramientas estan en ingles asi que mantengamos esa dualidad para los conceptos tecnicos especificos . En los diagramas podemo dejar todo en ingles
+
+en los ejemplos de bash aclarar que eso es linux o mac osx y agregar un ejemplo equivalente en windows con comandos simples aplicables en cmd
+
+Agregar el concepto de fork en github
+
+pongamos la parte de fork al final despues de explicar el pull request
+
+Agregemos como seccion de Convenciones de Git: Estrategia de ramas (branching strategy) Convenciones de commits REsolucion de conflictos Protección de rama principal Pero tods muy breves con algun ejemplo corto
