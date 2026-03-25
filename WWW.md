@@ -30,7 +30,7 @@ TCP/IP (Transmission Control Protocol/Internet Protocol) es el conjunto fundamen
 - **Puertos**: TCP usa puertos (0-65535) para identificar servicios; HTTP usa puerto 80, HTTPS puerto 443
 
 ##### Ejemplo
-c```powershell
+```powershell
 # Windows: Ver conexiones TCP activas
 netstat -an | findstr ESTABLISHED
 

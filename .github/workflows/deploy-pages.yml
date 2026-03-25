@@ -113,6 +113,10 @@ jobs:
           ${htmlContent}
               </article>
               <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/http.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/nginx.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/apache.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/powershell.min.js"></script>
               <script type="module">
                   import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
                   
@@ -148,6 +152,13 @@ jobs:
                     }
                   
                   document.querySelectorAll('pre code:not(.language-mermaid)').forEach((block) => {
+                      const languageClass = Array.from(block.classList).find(c => c.startsWith('language-'));
+                      if (languageClass) {
+                        const language = languageClass.replace('language-', '');
+                        if (!hljs.getLanguage(language)) {
+                          block.classList.remove(languageClass);
+                        }
+                      }
                       hljs.highlightElement(block);
                   });
               </script>
