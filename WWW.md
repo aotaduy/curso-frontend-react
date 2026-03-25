@@ -300,9 +300,10 @@ sequenceDiagram
     participant Browser as Navegador
     participant Server as Servidor Web
     
-    Browser->>Server: GET /index.html HTTP/1.1<br/>Host: example.com<br/>User-Agent: Mozilla/5.0
-    Note over Server: Procesa la solicitud http<br/>Busca el archivo<br/>Genera respuesta
-    Server->>Browser: HTTP/1.1 200 OK<br/>Content-Type: text/html<br/><br/>&lt;html&gt;...&lt;/html&gt;
+  Browser->>Server: GET /index.html HTTP/1.1 (Host: example.com)
+  Note over Server: Procesa la solicitud, busca el archivo y genera la respuesta
+  Server->>Browser: HTTP/1.1 200 OK (Content-Type: text/html)
+  Note over Browser,Server: Body de ejemplo: documento HTML
     Note over Browser: Renderiza la página
 ```
 

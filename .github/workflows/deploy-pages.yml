@@ -66,12 +66,32 @@ jobs:
               <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css">
               <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
               <style>
+                  :root {
+                    --page-bg: #ffffff;
+                    --page-fg: #24292f;
+                  }
+
+                  @media (prefers-color-scheme: dark) {
+                    :root {
+                      --page-bg: #0d1117;
+                      --page-fg: #c9d1d9;
+                    }
+                  }
+
+                  body {
+                    margin: 0;
+                    background-color: var(--page-bg);
+                    color: var(--page-fg);
+                  }
+
                   .markdown-body {
                       box-sizing: border-box;
                       min-width: 200px;
                       max-width: 980px;
                       margin: 0 auto;
                       padding: 45px;
+                    background-color: var(--page-bg);
+                    color: var(--page-fg);
                   }
                   @media (max-width: 767px) {
                       .markdown-body {
@@ -111,20 +131,21 @@ jobs:
                       pre.replaceWith(mermaidDiv);
                   });
                   
-                  try {
-                      await mermaid.run({
-                          querySelector: '.mermaid',
-                      });
-                  } catch (e) {
-                      console.error('Mermaid rendering error:', e);
-                      document.querySelectorAll('.mermaid').forEach(div => {
-                          if (!div.hasAttribute('data-processed')) {
-                              div.style.color = 'red';
-                              div.style.whiteSpace = 'pre-wrap';
-                              div.textContent = 'Mermaid error: ' + e.message;
-                          }
-                      });
-                  }
+                    const mermaidBlocks = Array.from(document.querySelectorAll('.mermaid'));
+                    for (let i = 0; i < mermaidBlocks.length; i++) {
+                      const div = mermaidBlocks[i];
+                      const graphDefinition = div.textContent || '';
+                      try {
+                        const { svg } = await mermaid.render('mermaid-' + i, graphDefinition);
+                        div.innerHTML = svg;
+                        div.setAttribute('data-processed', 'true');
+                      } catch (e) {
+                        console.error('Mermaid rendering error:', e);
+                        div.style.color = 'red';
+                        div.style.whiteSpace = 'pre-wrap';
+                        div.textContent = 'Mermaid error: ' + e.message;
+                      }
+                    }
                   
                   document.querySelectorAll('pre code:not(.language-mermaid)').forEach((block) => {
                       hljs.highlightElement(block);
