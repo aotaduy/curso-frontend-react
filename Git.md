@@ -40,19 +40,9 @@ Git organiza el trabajo en tres espacios principales: el directorio de trabajo (
 
 ### Flujo Mínimo
 
-**Linux/macOS (bash)**
+**Windows/Linux/Mac**
 
 ```bash
-git init
-git add .
-git commit -m "Initial version"
-git remote add origin https://github.com/usuario/proyecto.git
-git push -u origin main
-```
-
-**Windows (cmd)**
-
-```cmd
 git init
 git add .
 git commit -m "Initial version"
@@ -126,18 +116,9 @@ Una rama (branch) es una línea de desarrollo independiente dentro del mismo rep
 
 ### Ejemplo
 
-**Linux/macOS (bash)**
+**Windows/Linux/Mac**
 
 ```bash
-git switch -c feature/navbar
-git add .
-git commit -m "Build navigation bar"
-git switch main
-```
-
-**Windows (cmd)**
-
-```cmd
 git switch -c feature/navbar
 git add .
 git commit -m "Build navigation bar"
@@ -175,16 +156,9 @@ Merge es la operación que integra los cambios de una rama (branch) en otra. Es 
 
 ### Ejemplo
 
-**Linux/macOS (bash)**
+**Windows/Linux/Mac**
 
 ```bash
-git switch main
-git merge feature/navbar
-```
-
-**Windows (cmd)**
-
-```cmd
 git switch main
 git merge feature/navbar
 ```
@@ -224,16 +198,9 @@ Rebase reescribe la base de una rama (branch) para que sus commits parezcan cons
 
 ### Ejemplo
 
-**Linux/macOS (bash)**
+**Windows/Linux/Mac**
 
 ```bash
-git switch feature/navbar
-git rebase main
-```
-
-**Windows (cmd)**
-
-```cmd
 git switch feature/navbar
 git rebase main
 ```
@@ -271,17 +238,9 @@ GitHub es una plataforma de alojamiento y colaboración para repositorios Git. A
 
 ### Operaciones comunes
 
-**Linux/macOS (bash)**
+**Windows/Linux/Mac**
 
 ```bash
-git clone https://github.com/usuario/proyecto.git
-git pull origin main
-git push origin feature/navbar
-```
-
-**Windows (cmd)**
-
-```cmd
 git clone https://github.com/usuario/proyecto.git
 git pull origin main
 git push origin feature/navbar
@@ -314,18 +273,9 @@ Un pull request (PR) es una propuesta de integración de cambios entre ramas (br
 
 ### Ejemplo
 
-**Linux/macOS (bash)**
+**Windows/Linux/Mac**
 
 ```bash
-git switch -c feature/readme-git
-git add Git.md
-git commit -m "Add Git and GitHub appendix"
-git push -u origin feature/readme-git
-```
-
-**Windows (cmd)**
-
-```cmd
 git switch -c feature/readme-git
 git add Git.md
 git commit -m "Add Git and GitHub appendix"
@@ -360,21 +310,9 @@ Un fork es una copia de un repositorio en tu propia cuenta de GitHub. Se usa muc
 
 ### Ejemplo de sincronización de fork
 
-**Linux/macOS (bash)**
+**Windows/Linux/Mac**
 
 ```bash
-git clone https://github.com/tu-usuario/proyecto.git
-cd proyecto
-git remote add upstream https://github.com/organizacion/proyecto.git
-git fetch upstream
-git switch main
-git merge upstream/main
-git push origin main
-```
-
-**Windows (cmd)**
-
-```cmd
 git clone https://github.com/tu-usuario/proyecto.git
 cd proyecto
 git remote add upstream https://github.com/organizacion/proyecto.git
@@ -418,17 +356,9 @@ Cuando aparezcan conflictos (conflicts), resolver el archivo manualmente, probar
 
 **Ejemplo corto**
 
-**Linux/macOS (bash)**
+**Windows/Linux/Mac**
 
 ```bash
-git status
-git add .
-git commit
-```
-
-**Windows (cmd)**
-
-```cmd
 git status
 git add .
 git commit
