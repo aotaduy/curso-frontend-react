@@ -3,19 +3,19 @@
 ## 📚 Documentación Principal
 
 ### Conceptos Fundamentales
-- [**WWW.md**](WWW.md) - World Wide Web: protocolos, arquitectura y fundamentos de internet
-- [**Hypertexto.md**](Hypertexto.md) - Introducción a HTML, la estructura de documentos web y semántica
-- [**React.md**](React.md) - Guía completa sobre React, componentes, hooks y ecosistema
+- [**WWW.md**](WWW) - World Wide Web: protocolos, arquitectura y fundamentos de internet
+- [**Hypertexto.md**](Hypertexto) - Introducción a HTML, la estructura de documentos web y semántica
+- [**React.md**](React) - Guía completa sobre React, componentes, hooks y ecosistema
 
 ### Apéndices
 
-- [**Git.md**](Git.md) - Apéndice de Git y GitHub: control de versiones, ramas, merge, rebase y pull requests
-- [**Vite-React.md**](Vite-React.md) - Apéndice de React + Vite: instalación, estructura, desarrollo local y versionado con GitHub
+- [**Git.md**](Git) - Apéndice de Git y GitHub: control de versiones, ramas, merge, rebase y pull requests
+- [**Vite-React.md**](Vite-React) - Apéndice de React + Vite: instalación, estructura, desarrollo local y versionado con GitHub
 ---
 
 ## 🔍 Glosario
 
-[**Glosario de Términos**](glosario.md) - Definiciones de conceptos clave no desarrollados extensamente en los documentos principales.
+[**Glosario de Términos**](glosario) - Definiciones de conceptos clave no desarrollados extensamente en los documentos principales.
 
 ---
 
@@ -35,11 +35,11 @@ Todos los ejemplos incluyen instrucciones detalladas en sus respectivos director
 
 | Sección | Descripción |
 |---------|------------|
-| [Documentación](Hypertexto.md) | Lecturas teóricas principales |
-| [Glosario](glosario.md) | Términos clave explicados |
+| [Documentación](Hypertexto) | Lecturas teóricas principales |
+| [Glosario](glosario) | Términos clave explicados |
 | [Ejemplos](ejemplos-hypertexto/) | Código funcional y demostrable |
-| [Web Fundamentals](src/1%20-%20Web.md) | Conceptos avanzados |
-| [React Guide](React.md) | Framework moderno |
+| [Web Fundamentals](src/1%20-%20Web) | Conceptos avanzados |
+| [React Guide](React) | Framework moderno |
 
 ---
 
