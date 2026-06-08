@@ -110,14 +110,7 @@ git --version
 
 ### Paso 1: Generar el proyecto
 
-**Windows (cmd)**
-
-```cmd
-npm create vite@latest mi-proyecto -- --template react
-cd mi-proyecto
-```
-
-**macOS/Linux (bash)**
+**Windows/Linux/Mac**
 
 ```bash
 npm create vite@latest mi-proyecto -- --template react
@@ -131,13 +124,7 @@ Este comando:
 
 ### Paso 2: Instalar dependencias
 
-**Windows (cmd)**
-
-```cmd
-npm install
-```
-
-**macOS/Linux (bash)**
+**Windows/Linux/Mac**
 
 ```bash
 npm install
@@ -147,13 +134,7 @@ Esto descarga todas las librerías listadas en `package.json`.
 
 ### Paso 3: Iniciar el servidor de desarrollo
 
-**Windows (cmd)**
-
-```cmd
-npm run dev
-```
-
-**macOS/Linux (bash)**
+**Windows/Linux/Mac**
 
 ```bash
 npm run dev
@@ -187,15 +168,7 @@ mi-proyecto/
 
 ### Paso 1: Inicializar repositorio local
 
-**Windows (cmd)**
-
-```cmd
-git init
-git add .
-git commit -m "Initial React + Vite project"
-```
-
-**macOS/Linux (bash)**
+**Windows/Linux/Mac**
 
 ```bash
 git init
@@ -215,15 +188,7 @@ El archivo `.gitignore` (generado automáticamente) ya excluye `node_modules/` y
 
 GitHub te mostrará comandos. Usá estos (reemplazá `usuario` y `mi-proyecto`):
 
-**Windows (cmd)**
-
-```cmd
-git remote add origin https://github.com/usuario/mi-proyecto.git
-git branch -M main
-git push -u origin main
-```
-
-**macOS/Linux (bash)**
+**Windows/Linux/Mac**
 
 ```bash
 git remote add origin https://github.com/usuario/mi-proyecto.git
@@ -235,15 +200,7 @@ git push -u origin main
 
 Mientras desarrollás:
 
-**Windows (cmd)**
-
-```cmd
-git add .
-git commit -m "feat: add login component"
-git push origin main
-```
-
-**macOS/Linux (bash)**
+**Windows/Linux/Mac**
 
 ```bash
 git add .
@@ -273,13 +230,7 @@ El archivo `package.json` contiene scripts que podés ejecutar:
 
 **Desarrollar (servidor local con HMR)**
 
-**Windows (cmd)**
-
-```cmd
-npm run dev
-```
-
-**macOS/Linux (bash)**
+**Windows/Linux/Mac**
 
 ```bash
 npm run dev
@@ -289,13 +240,7 @@ Abrí `http://localhost:5173` en el navegador.
 
 **Construir para producción**
 
-**Windows (cmd)**
-
-```cmd
-npm run build
-```
-
-**macOS/Linux (bash)**
+**Windows/Linux/Mac**
 
 ```bash
 npm run build
@@ -305,13 +250,7 @@ Genera una carpeta `dist/` con código optimizado listo para desplegar.
 
 **Previsualizar build de producción**
 
-**Windows (cmd)**
-
-```cmd
-npm run preview
-```
-
-**macOS/Linux (bash)**
+**Windows/Linux/Mac**
 
 ```bash
 npm run preview
@@ -325,13 +264,7 @@ npm run preview
 
 1. **Iniciar sesión**
 
-**Windows (cmd)**
-
-```cmd
-npm run dev
-```
-
-**macOS/Linux (bash)**
+**Windows/Linux/Mac**
 
 ```bash
 npm run dev
@@ -339,13 +272,7 @@ npm run dev
 
 2. **Trabajar en features** con ramas (branches):
 
-**Windows (cmd)**
-
-```cmd
-git switch -c feature/nueva-funcionalidad
-```
-
-**macOS/Linux (bash)**
+**Windows/Linux/Mac**
 
 ```bash
 git switch -c feature/nueva-funcionalidad
@@ -353,14 +280,7 @@ git switch -c feature/nueva-funcionalidad
 
 3. **Hacer commits frecuentes** con mensajes claros:
 
-**Windows (cmd)**
-
-```cmd
-git add src/components/LoginForm.jsx
-git commit -m "feat: add login form component"
-```
-
-**macOS/Linux (bash)**
+**Windows/Linux/Mac**
 
 ```bash
 git add src/components/LoginForm.jsx
@@ -369,13 +289,7 @@ git commit -m "feat: add login form component"
 
 4. **Subir rama a GitHub**:
 
-**Windows (cmd)**
-
-```cmd
-git push -u origin feature/nueva-funcionalidad
-```
-
-**macOS/Linux (bash)**
+**Windows/Linux/Mac**
 
 ```bash
 git push -u origin feature/nueva-funcionalidad
@@ -427,13 +341,7 @@ git push -u origin feature/nueva-funcionalidad
 
 Si querés agregar una librería (ej: React Router para navegación):
 
-**Windows (cmd)**
-
-```cmd
-npm install react-router-dom
-```
-
-**macOS/Linux (bash)**
+**Windows/Linux/Mac**
 
 ```bash
 npm install react-router-dom
