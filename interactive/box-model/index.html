@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model Interactivo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="page">
+        <h1>CSS: Box Model Interactivo</h1>
+        <p class="intro">
+            El <strong>Box Model</strong> define como se calcula el espacio de un elemento: contenido,
+            padding, borde y margen. Ajusta los controles para ver el efecto en tiempo real.
+        </p>
+
+        <section class="demo-grid">
+            <article class="panel controls-panel">
+                <h2>Controles</h2>
+
+                <div class="control-row">
+                    <label for="unit">Unidad</label>
+                    <select id="unit">
+                        <option value="px" selected>px</option>
+                        <option value="rem">rem</option>
+                        <option value="em">em</option>
+                        <option value="%">%</option>
+                    </select>
+                </div>
+
+                <div class="control-row with-toggle">
+                    <input id="toggleWidth" type="checkbox" checked aria-label="Toggle width">
+                    <label for="contentWidth">width</label>
+                    <input id="contentWidth" type="number" min="0" max="500" step="1" value="220">
+                </div>
+
+                <div class="control-row with-toggle">
+                    <input id="toggleHeight" type="checkbox" checked aria-label="Toggle height">
+                    <label for="contentHeight">height</label>
+                    <input id="contentHeight" type="number" min="0" max="400" step="1" value="120">
+                </div>
+
+                <div class="control-row with-toggle">
+                    <input id="togglePadding" type="checkbox" checked aria-label="Toggle padding">
+                    <label for="padding">padding</label>
+                    <input id="padding" type="number" min="0" max="120" step="1" value="24">
+                </div>
+
+                <div class="control-row with-toggle">
+                    <input id="toggleMargin" type="checkbox" checked aria-label="Toggle margin">
+                    <label for="margin">margin</label>
+                    <input id="margin" type="number" min="0" max="120" step="1" value="28">
+                </div>
+
+                <div class="control-row with-toggle">
+                    <input id="toggleBorderWidth" type="checkbox" checked aria-label="Toggle border-width">
+                    <label for="borderWidth">border-width</label>
+                    <input id="borderWidth" type="number" min="0" max="40" step="1" value="6">
+                </div>
+
+                <div class="control-row with-toggle">
+                    <input id="toggleBorderStyle" type="checkbox" checked aria-label="Toggle border-style">
+                    <label for="borderStyle">border-style</label>
+                    <select id="borderStyle">
+                        <option value="solid" selected>solid</option>
+                        <option value="dashed">dashed</option>
+                        <option value="dotted">dotted</option>
+                        <option value="double">double</option>
+                        <option value="groove">groove</option>
+                        <option value="ridge">ridge</option>
+                    </select>
+                </div>
+
+                <div class="control-row with-toggle">
+                    <input id="toggleBorderColor" type="checkbox" checked aria-label="Toggle border-color">
+                    <label for="borderColor">border-color</label>
+                    <input id="borderColor" type="color" value="#3b82f6">
+                </div>
+
+                <div class="control-row with-toggle">
+                    <input id="toggleBackgroundColor" type="checkbox" checked aria-label="Toggle background-color">
+                    <label for="contentBg">background-color</label>
+                    <input id="contentBg" type="color" value="#dbeafe">
+                </div>
+
+                <div class="control-row with-toggle">
+                    <input id="toggleColor" type="checkbox" checked aria-label="Toggle color">
+                    <label for="textColor">color</label>
+                    <input id="textColor" type="color" value="#1e293b">
+                </div>
+            </article>
+
+            <article class="panel visual-panel">
+                <h2>Vista de la caja</h2>
+
+                <div class="margin-container">
+                    <p class="layer-tag">Margin area</p>
+
+                    <div id="boxPreview" class="box-preview">
+                        <div class="box-content">
+                            <p>Content</p>
+                            <small>width / height</small>
+                        </div>
+                    </div>
+                </div>
+
+                <pre id="cssOutput" class="css-output"></pre>
+            </article>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

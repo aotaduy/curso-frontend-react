@@ -5,7 +5,6 @@
 ### Conceptos Fundamentales
 - [**WWW.md**](WWW.md) - World Wide Web: protocolos, arquitectura y fundamentos de internet
 - [**Hypertexto.md**](Hypertexto.md) - Introducción a HTML, la estructura de documentos web y semántica
-- [**Web.md**](src/1%20-%20Web.md) - Compendio de tecnologías web
 - [**React.md**](React.md) - Guía completa sobre React, componentes, hooks y ecosistema
 
 ### Apéndices

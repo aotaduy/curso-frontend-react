@@ -286,6 +286,8 @@ a:visited {
 └─────────────────────────────────┘
 ```
 
+**💡 Ver ejemplo interactivo:** [Box Model Interactivo](interactive/box-model/)
+
 **💡 Ver ejemplo:** [CSS Layout Flexbox](ejemplos-hypertexto/05-css-layout-flexbox/)
 
 ### Ejemplo: Flexbox (Layout 1D)
